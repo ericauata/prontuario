@@ -5,7 +5,7 @@ module.exports = {
    entry: "./src/index.js",
    output: {
       path: path.join(__dirname, "../dist"),
-      filename: "bundle.js",
+      filename: "index.js",
       publicPath: "/"
    },
    plugins: [
@@ -31,7 +31,11 @@ module.exports = {
          }
       ]
    },
+   target: "web",
    devServer: {
+      port: "3000",
+      hot: true,
+      liveReload: true,
       proxy: {
          '/api/*': {
             target: "http://localhost:8080",
