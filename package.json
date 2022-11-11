@@ -4,7 +4,8 @@
   "description": "",
   "main": "./backend/index.js",
   "scripts": {
-    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run start\" "
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run start\" ",
+    "build": "cd frontend && npm start build"
   },
   "repository": {
     "type": "git",
