@@ -4,7 +4,6 @@
   "description": "",
   "scripts": {
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run start\" ",
-    "build": "cd frontend && npm run start",
     "start": "cd backend && npm run start"
   },
   "repository": {
