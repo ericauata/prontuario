@@ -31,19 +31,19 @@ export default function EventsByCategory() {
                   "py-3 px-4 block border-b"
             }
             key={event._id}>
-            <div className={`text-sky-700 font-semibold text-sm uppercase mb-1`}>
+            <div className={`text-rose-600 font-semibold text-sm uppercase mb-1`}>
                {event.specialty}
             </div>
             <div className="flex text-sm items-center">
-               <CalendarMonthOutlinedIcon viewBox="0 0 22 22" className="w-4 h-4 text-slate-500 mr-1" />
+               <CalendarMonthOutlinedIcon viewBox="0 0 22 22" className="text-neutral-400 mr-1 scale-75" />
                <span>{formatDate(event.updatedAt, "short")}</span>
             </div>
-            <div className="flex text-sm">
-               <PersonOutlineOutlinedIcon viewBox="0 0 22 22" className="w-4 h-4 text-slate-500 mr-1" />
+            <div className="flex text-sm items-center">
+               <PersonOutlineOutlinedIcon viewBox="0 0 22 22" className="text-neutral-400 mr-1 scale-75" />
                <span>{event.doctor}</span>
             </div>
-            <div className="flex text-sm">
-               <AssignmentLateOutlinedIcon viewBox="0 0 22 22" className="w-4 h-4 text-slate-500 mr-1" />
+            <div className="flex text-sm items-center">
+               <AssignmentLateOutlinedIcon viewBox="0 0 22 22" className="text-neutral-400 mr-1 scale-75" />
                <span>{event.diagnosis.join(", ")}</span>
             </div>
          </NavLink>

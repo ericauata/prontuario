@@ -8,7 +8,7 @@ export default function CurrentDiagnosis() {
 
    const diagnosisEl = thisPatient.currentDiagnosis?.map(item => (
       <div className="mb-4" key={item._id}>
-         <h3 className="text-md font-bold text-sky-700 uppercase">{item.name}</h3>
+         <h3 className="text-md font-bold text-rose-600 uppercase">{item.name}</h3>
          <p>{item.body}</p>
       </div>
    ))

@@ -22,7 +22,7 @@ export default function PatientSidebar(props) {
                <NavLink
                   to={`${patientPath}/events/timeline?n=1`}
                   className={
-                     ({ isActive }) => isActive ? "bg-slate-100 text-sky-700 font-bold py-2 px-4 border-l-8 border-sky-700" : "py-2 px-4"
+                     ({ isActive }) => isActive ? "bg-slate-100 text-rose-600 font-bold py-2 px-3 border-l-8 border-rose-600" : "py-2 px-4"
                   }>
                   <FormatListBulletedOutlinedIcon className="mr-1" />
                   Eventos recentes
@@ -32,7 +32,7 @@ export default function PatientSidebar(props) {
                <NavLink
                   to={`${patientPath}/diagnosis`}
                   className={
-                     ({ isActive }) => isActive ? "bg-slate-100 text-sky-700 font-bold py-2 px-4 border-l-8 border-sky-700" : "py-2 px-4"
+                     ({ isActive }) => isActive ? "bg-slate-100 text-rose-600 font-bold py-2 px-3 border-l-8 border-rose-600" : "py-2 px-4"
                   }>
                   <CreateNewFolderOutlinedIcon className="mr-1" />
                   Diagnósticos atuais
@@ -42,7 +42,7 @@ export default function PatientSidebar(props) {
                <NavLink
                   to={`${patientPath}/categories/636ab44fbf294dd0321dee27`}
                   className={
-                     ({ isActive }) => isActive ? "bg-slate-100 text-sky-700 font-bold py-2 px-4 border-l-8 border-sky-700" : "py-2 px-4"
+                     ({ isActive }) => isActive ? "bg-slate-100 text-rose-600 font-bold py-2 px-3 border-l-8 border-rose-600" : "py-2 px-4"
                   }>
                   <ChairOutlinedIcon className="mr-1" />
                   Ambulatório
@@ -52,7 +52,7 @@ export default function PatientSidebar(props) {
                <NavLink
                   to={`${patientPath}/profile`}
                   className={
-                     ({ isActive }) => isActive ? "bg-slate-100 text-sky-700 font-bold py-2 px-4 border-l-8 border-sky-700" : "py-2 px-4"
+                     ({ isActive }) => isActive ? "bg-slate-100 text-rose-600 font-bold py-2 px-3 border-l-8 border-rose-600" : "py-2 px-4"
                   }>
                   <FolderSharedOutlinedIcon className="mr-1" />
                   Dados pessoais

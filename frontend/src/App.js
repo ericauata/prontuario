@@ -20,7 +20,7 @@ export default function App() {
             <div className="w-screen bg-white h-screen">
                <Routes>
 
-                  <Route path="/" element={<Home />} />
+                  <Route exact path="/" element={<Home />} />
 
                   <Route path="/patients/:patientId" element={<Patient />}>
                      <Route path="events/timeline" element={<Timeline />} />
@@ -30,6 +30,7 @@ export default function App() {
                         <Route path="events/:eventId" element={<EventDetails />} />
                      </Route>
                   </Route>
+
                </Routes>
             </div>
          </div>
