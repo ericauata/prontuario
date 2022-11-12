@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run start\" ",
-    "start": "npm install -g npm@9.1.1 && cd backend && npm run start"
+    "build": "npm install -g npm@9.1.1 && cd backend && npm run start"
   },
   "repository": {
     "type": "git",
