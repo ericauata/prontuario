@@ -77,6 +77,8 @@ app.get("/api/patients/:patientId/categories/:categoryId", async (req, res) => {
    res.send(events)
 })
 
+// Hey
+
 import path from "path"
 import { fileURLToPath } from "url"
 const __filename = fileURLToPath(import.meta.url)
