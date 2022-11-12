@@ -2,7 +2,7 @@
   "name": "prontuario-ew",
   "version": "1.0.0",
   "description": "",
-  "main": "./backend/index.js",
+  "main": "/backend/index.js",
   "scripts": {
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run start\" ",
     "build": "cd frontend && npm start build && cd ../backend && npm run start"
