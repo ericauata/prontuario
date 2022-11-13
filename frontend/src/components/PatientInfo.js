@@ -3,7 +3,7 @@ import { Link, NavLink, useParams } from "react-router-dom"
 
 import { Context } from "../Context"
 
-import { MdOutlineMenu } from "react-icons/md"
+import { MdAccountCircle } from "react-icons/md"
 
 export default function PatientInfo(props) {
 
@@ -19,7 +19,7 @@ export default function PatientInfo(props) {
    return (
       <div className="bg-slate-700 text-white">
          <div id="patient-info" className="pt-2 pb-3 px-4 flex items-baseline">
-            {/* <MdOutlineMenu className="mr-2 text-2xl self-center" /> */}
+            <MdAccountCircle className="mr-2 text-2xl self-center" />
             <h2 id="patient-name" className="text-2xl mr-3 font-serif">
                {thisPatient.fullName}
             </h2>

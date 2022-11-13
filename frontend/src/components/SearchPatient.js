@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react"
 import { Link } from "react-router-dom"
 
-import { MdSearch, MdClose } from "react-icons/md"
+import { MdOutlinePersonSearch, MdClose } from "react-icons/md"
 
 export default function SearchPatient() {
 
@@ -14,6 +14,7 @@ export default function SearchPatient() {
    useEffect(() => {
       if (suggestions.length > 0) {
          document.body.addEventListener("keydown", onKeyDown)
+         document.body.addEventListener("click", () => { handleClick() })
       } else {
          document.body.removeEventListener("keydown", onKeyDown)
       }
@@ -94,17 +95,18 @@ export default function SearchPatient() {
    return (
       <div className="relative">
          <label className="relative text-gray-400 block">
-            <MdSearch className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-300" />
+            <MdOutlinePersonSearch className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-2 text-slate-400" />
             <input
                className="
-               rounded w-full border-none bg-slate-500 text-base text-gray-200 p-1
-               placeholder:italic placeholder:text-gray-300 placeholder:text-sm pl-8
-               focus:bg-white focus:text-slate-800"
+               rounded w-full border-none bg-slate-600 text-base text-gray-200 p-1
+               placeholder:italic placeholder:text-slate-400 placeholder:text-sm pl-8
+               focus:bg-white focus:text-slate-800 focus:placeholder:text-slate-500"
                placeholder="Digite o nome do paciente…"
                type="text"
                value={value}
                onChange={handleChange}
                ref={inputRef}
+               onClick={(event) => event.stopPropagation()}
             />
             {value &&
                <MdClose
@@ -120,6 +122,7 @@ export default function SearchPatient() {
             <div
                ref={suggestionsRef}
                className="absolute shadow-lg w-full rounded mt-1 py-1 text-lg bg-white opacity-95"
+               onClick={(event) => event.stopPropagation()}
             >
                {suggestionsEl}
             </div>
