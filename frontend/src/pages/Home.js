@@ -11,8 +11,8 @@ export default function Home() {
    return (
       <div className="bg-slate-800 w-full h-screen flex justify-center items-center flex-col pb-20">
          <div className="w-[40rem] flex justify-center items-center flex-col">
-            <h1 id="logo" className="text-4xl font-serif text-white flex mb-5">
-               <MdSpa className="mr-1 w-10 h-10" />
+            <h1 id="logo" className="text-5xl font-serif text-white flex mb-5 mr-2">
+               <MdSpa className="mr-2 w-11 h-11" />
                PRONTUÁRIO EW
             </h1>
             <div className="mt-10 w-full">
@@ -21,7 +21,7 @@ export default function Home() {
             <div className="w-full flex flex-row items-stretch mt-10">
                <Link
                   to="/emergency"
-                  className="flex flex-col items-center justify-center bg-slate-900 text-white rounded-lg font-serif uppercase p-4 hover:bg-slate-700 w-1/4 mr-2"
+                  className="flex flex-col items-center justify-center bg-slate-900 text-white rounded-lg font-serif uppercase p-4 hover:bg-slate-700 w-1/4 mr-1"
                >
                   <TbHeartRateMonitor className="w-10 h-10 mb-2" />
                   Emergência
@@ -42,7 +42,7 @@ export default function Home() {
                </Link>
                <Link
                   to="/exams"
-                  className="flex flex-col items-center justify-center bg-slate-900 text-white rounded-lg font-serif uppercase p-4 hover:bg-slate-700 w-1/4 ml-2"
+                  className="flex flex-col items-center justify-center bg-slate-900 text-white rounded-lg font-serif uppercase p-4 hover:bg-slate-700 w-1/4 ml-1"
                >
                   <MdOutlineDocumentScanner className="w-10 h-10 mb-2" />
                   Exames
