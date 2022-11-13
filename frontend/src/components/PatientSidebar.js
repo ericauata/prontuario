@@ -3,12 +3,10 @@ import { NavLink, useParams } from "react-router-dom"
 
 import { Context } from "../Context"
 
-import CreateNewFolderOutlinedIcon from "@mui/icons-material/CreateNewFolderOutlined";
-import FolderSharedOutlinedIcon from "@mui/icons-material/FolderSharedOutlined"
-import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBulletedOutlined"
-import BedOutlinedIcon from "@mui/icons-material/BedOutlined"
-import MonitorHeartOutlinedIcon from "@mui/icons-material/MonitorHeartOutlined"
-import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined"
+import { MdOutlineCreateNewFolder } from "react-icons/md";
+import { MdOutlineFolderShared } from "react-icons/md"
+import { MdOutlineFormatListBulleted } from "react-icons/md"
+import { MdOutlineChair } from "react-icons/md"
 
 export default function PatientSidebar(props) {
 
@@ -22,9 +20,9 @@ export default function PatientSidebar(props) {
                <NavLink
                   to={`${patientPath}/events/timeline?n=1`}
                   className={
-                     ({ isActive }) => isActive ? "bg-slate-100 text-rose-600 font-bold py-2 px-3 border-l-8 border-rose-600" : "py-2 px-4"
+                     ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-rose-600 font-bold py-2 px-2 border-l-8 border-rose-600" : "py-2 px-4 flex items-center"
                   }>
-                  <FormatListBulletedOutlinedIcon className="mr-1" />
+                  <MdOutlineFormatListBulleted className="mr-1 text-xl" />
                   Eventos recentes
                </NavLink>
             </li>
@@ -32,9 +30,9 @@ export default function PatientSidebar(props) {
                <NavLink
                   to={`${patientPath}/diagnosis`}
                   className={
-                     ({ isActive }) => isActive ? "bg-slate-100 text-rose-600 font-bold py-2 px-3 border-l-8 border-rose-600" : "py-2 px-4"
+                     ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-rose-600 font-bold py-2 px-2 border-l-8 border-rose-600" : "py-2 px-4 flex items-center"
                   }>
-                  <CreateNewFolderOutlinedIcon className="mr-1" />
+                  <MdOutlineCreateNewFolder className="mr-1 text-xl" />
                   Diagnósticos atuais
                </NavLink>
             </li>
@@ -42,9 +40,9 @@ export default function PatientSidebar(props) {
                <NavLink
                   to={`${patientPath}/categories/636ab44fbf294dd0321dee27`}
                   className={
-                     ({ isActive }) => isActive ? "bg-slate-100 text-rose-600 font-bold py-2 px-3 border-l-8 border-rose-600" : "py-2 px-4"
+                     ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-rose-600 font-bold py-2 px-2 border-l-8 border-rose-600" : "py-2 px-4 flex items-center"
                   }>
-                  <ChairOutlinedIcon className="mr-1" />
+                  <MdOutlineChair className="mr-1 text-xl" />
                   Ambulatório
                </NavLink>
             </li>
@@ -52,9 +50,9 @@ export default function PatientSidebar(props) {
                <NavLink
                   to={`${patientPath}/profile`}
                   className={
-                     ({ isActive }) => isActive ? "bg-slate-100 text-rose-600 font-bold py-2 px-3 border-l-8 border-rose-600" : "py-2 px-4"
+                     ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-rose-600 font-bold py-2 px-2 border-l-8 border-rose-600" : "py-2 px-4 flex items-center"
                   }>
-                  <FolderSharedOutlinedIcon className="mr-1" />
+                  <MdOutlineFolderShared className="mr-1 text-xl" />
                   Dados pessoais
                </NavLink>
             </li>

@@ -2,10 +2,6 @@ import React, { useEffect, useContext, useState } from "react"
 import { Link, useSearchParams, useParams } from "react-router-dom"
 import { Context } from "../../Context"
 
-import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined"
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined"
-import AssignmentLateOutlinedIcon from "@mui/icons-material/AssignmentLateOutlined"
-
 export default function Timeline() {
 
    const { formatDate, thisPatient } = useContext(Context)

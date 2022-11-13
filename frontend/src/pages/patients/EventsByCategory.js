@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext } from "react"
 import { useParams, useOutletContext, NavLink, Outlet } from "react-router-dom"
 import { Context } from "../../Context"
 
-import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined"
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined"
-import AssignmentLateOutlinedIcon from "@mui/icons-material/AssignmentLateOutlined"
+import { MdOutlineCalendarToday } from "react-icons/md"
+import { MdOutlinePersonOutline } from "react-icons/md"
+import { MdAssignmentLate } from "react-icons/md"
 
 export default function EventsByCategory() {
 
@@ -35,15 +35,15 @@ export default function EventsByCategory() {
                {event.specialty}
             </div>
             <div className="flex text-sm items-center">
-               <CalendarMonthOutlinedIcon viewBox="0 0 22 22" className="text-neutral-400 mr-1 scale-75" />
+               <MdOutlineCalendarToday viewBox="0 0 22 22" className="text-neutral-400 mr-1 scale-75" />
                <span>{formatDate(event.updatedAt, "short")}</span>
             </div>
             <div className="flex text-sm items-center">
-               <PersonOutlineOutlinedIcon viewBox="0 0 22 22" className="text-neutral-400 mr-1 scale-75" />
+               <MdOutlinePersonOutline viewBox="0 0 22 22" className="text-neutral-400 mr-1 scale-75" />
                <span>{event.doctor}</span>
             </div>
             <div className="flex text-sm items-center">
-               <AssignmentLateOutlinedIcon viewBox="0 0 22 22" className="text-neutral-400 mr-1 scale-75" />
+               <MdAssignmentLate viewBox="0 0 22 22" className="text-neutral-400 mr-1 scale-75" />
                <span>{event.diagnosis.join(", ")}</span>
             </div>
          </NavLink>

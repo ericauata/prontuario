@@ -1,5 +1,5 @@
 import React from "react"
-import SpaIcon from "@mui/icons-material/Spa"
+import { MdSpa } from "react-icons/md"
 
 export default function Header() {
 
@@ -15,8 +15,8 @@ export default function Header() {
                </div>
             </nav>
             <h1 id="logo" className="text-xl font-serif my-2 mx-4 mr-4">
-               <a href="/" className="text-white flex">
-                  <SpaIcon className="mr-1" />
+               <a href="/" className="text-white flex items-center">
+                  <MdSpa className="mr-1 text-2xl" />
                   PRONTUÁRIO EW
                </a>
             </h1>

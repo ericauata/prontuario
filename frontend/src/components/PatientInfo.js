@@ -3,7 +3,7 @@ import { Link, NavLink, useParams } from "react-router-dom"
 
 import { Context } from "../Context"
 
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined"
+import { MdOutlineMenu } from "react-icons/md"
 
 export default function PatientInfo(props) {
 
@@ -19,8 +19,8 @@ export default function PatientInfo(props) {
    return (
       <div className="bg-slate-700 text-white">
          <div id="patient-info" className="pt-2 pb-3 px-4 flex items-baseline">
+            <MdOutlineMenu className="mr-2 text-2xl self-center" />
             <h2 id="patient-name" className="text-2xl mr-3 font-serif">
-               <MenuOutlinedIcon className="mb-1 mr-2" />
                {thisPatient.fullName}
             </h2>
             <div className="flex text-sm">
