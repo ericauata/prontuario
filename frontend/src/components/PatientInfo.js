@@ -8,9 +8,6 @@ import { MdAccountCircle } from "react-icons/md"
 export default function PatientInfo(props) {
 
    const { thisPatient, getAge } = useContext(Context)
-   // const { patientId } = useParams()
-
-   // const patientPath = `/patients/${patientId}`
 
    const diagnosisEl = thisPatient.currentDiagnosis?.map(item => (
       <Link to="" key={item._id} className="underline">{item.name}</Link>

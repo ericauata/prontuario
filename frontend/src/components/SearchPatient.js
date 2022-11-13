@@ -14,7 +14,7 @@ export default function SearchPatient() {
    useEffect(() => {
       if (suggestions.length > 0) {
          document.body.addEventListener("keydown", onKeyDown)
-         document.body.addEventListener("click", () => { handleClick() })
+         document.body.addEventListener("click", () => { startOver() })
       } else {
          document.body.removeEventListener("keydown", onKeyDown)
       }
@@ -63,7 +63,7 @@ export default function SearchPatient() {
    function handleMouseOut(event) {
       event.target.blur()
    }
-   function handleClick() { // Reset everything
+   function startOver() { // Reset everything
       setSuggestions([])
       setValue("")
       inputRef.current.blur()
@@ -85,7 +85,7 @@ export default function SearchPatient() {
             className="block bg-white text-slate-900 py-1 px-3 focus:bg-slate-600 focus:outline-none focus:text-white text-base"
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
-            onClick={handleClick}
+            onClick={startOver}
          >
             {item.fullName}
          </Link>

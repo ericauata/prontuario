@@ -3,6 +3,7 @@ import { Link, useParams, Outlet } from "react-router-dom"
 
 import { Context } from "../../Context"
 
+import Header from "../../components/Header"
 import PatientSidebar from "../../components/PatientSidebar"
 import PatientInfo from "../../components/PatientInfo"
 import SearchPatient from "../../components/SearchPatient"
@@ -22,6 +23,7 @@ export default function Patient() {
 
    return (
       <div className="">
+         <Header />
          <div className="bg-slate-700 text-white p-2 pb-1">
             <SearchPatient />
          </div>

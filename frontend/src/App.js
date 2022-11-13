@@ -15,7 +15,6 @@ import CurrentDiagnosis from "./pages/patients/CurrentDiagnosis"
 export default function App() {
    return (
       <div>
-         <Header />
          <div className="flex">
             <div className="w-screen bg-white h-screen">
                <Routes>
