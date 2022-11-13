@@ -8,7 +8,7 @@ export default function Header() {
          <div className="bg-slate-900 flex justify-between items-stretch">
             <nav className="flex items-stretch ml-2">
                <div className="uppercase font-bold text-sm bg-slate-700 rounded-t mt-2 mr-1 text-white px-5 flex items-center">
-                  <a href="">Paciente</a>
+                  <a href="">Pacientes</a>
                </div>
                <div className="uppercase font-bold text-sm rounded-t mt-2 mr-1 text-white px-5 flex items-center">
                   <a href="">Emergência</a>

@@ -20,7 +20,7 @@ export default function PatientSidebar(props) {
                <NavLink
                   to={`${patientPath}/events/timeline?n=1`}
                   className={
-                     ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-rose-600 font-bold py-2 px-2 border-l-8 border-rose-600" : "py-2 px-4 flex items-center"
+                     ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-sky-600 font-bold py-2 px-2 border-l-8 border-sky-600" : "py-2 px-4 flex items-center"
                   }>
                   <MdOutlineFormatListBulleted className="mr-1 text-xl" />
                   Eventos recentes
@@ -30,7 +30,7 @@ export default function PatientSidebar(props) {
                <NavLink
                   to={`${patientPath}/diagnosis`}
                   className={
-                     ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-rose-600 font-bold py-2 px-2 border-l-8 border-rose-600" : "py-2 px-4 flex items-center"
+                     ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-sky-600 font-bold py-2 px-2 border-l-8 border-sky-600" : "py-2 px-4 flex items-center"
                   }>
                   <MdOutlineCreateNewFolder className="mr-1 text-xl" />
                   Diagnósticos atuais
@@ -40,7 +40,7 @@ export default function PatientSidebar(props) {
                <NavLink
                   to={`${patientPath}/categories/636ab44fbf294dd0321dee27`}
                   className={
-                     ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-rose-600 font-bold py-2 px-2 border-l-8 border-rose-600" : "py-2 px-4 flex items-center"
+                     ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-sky-600 font-bold py-2 px-2 border-l-8 border-sky-600" : "py-2 px-4 flex items-center"
                   }>
                   <MdOutlineChair className="mr-1 text-xl" />
                   Ambulatório
@@ -50,7 +50,7 @@ export default function PatientSidebar(props) {
                <NavLink
                   to={`${patientPath}/profile`}
                   className={
-                     ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-rose-600 font-bold py-2 px-2 border-l-8 border-rose-600" : "py-2 px-4 flex items-center"
+                     ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-sky-600 font-bold py-2 px-2 border-l-8 border-sky-600" : "py-2 px-4 flex items-center"
                   }>
                   <MdOutlineFolderShared className="mr-1 text-xl" />
                   Dados pessoais

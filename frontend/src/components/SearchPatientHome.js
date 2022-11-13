@@ -34,6 +34,7 @@ export default function SearchPatient() {
 
       if (isUp && suggestions.length > 0) {
          event.preventDefault()
+         console.log("Go up")
          if (inputIsFocused) {
             suggestionsItems[suggestionsItems.length - 1].focus()
             console.log("Suggestions items:", activeItemIndex)
@@ -46,6 +47,7 @@ export default function SearchPatient() {
 
       if (isDown && suggestions.length > 0) {
          event.preventDefault()
+         console.log("Go down")
          if (inputIsFocused) {
             suggestionsItems[0].focus()
          } else if (suggestionsItems[activeItemIndex + 1]) {
@@ -62,11 +64,6 @@ export default function SearchPatient() {
    function handleMouseOut(event) {
       event.target.blur()
    }
-   function handleClick() { // Reset everything
-      setSuggestions([])
-      setValue("")
-      inputRef.current.blur()
-   }
 
    function handleChange(event) {
       let newValue = event.target.value
@@ -81,10 +78,9 @@ export default function SearchPatient() {
          <Link
             to={`/patients/${item._id}`}
             key={item._id}
-            className="block bg-white text-slate-900 py-1 px-3 focus:bg-slate-600 focus:outline-none focus:text-white text-base"
+            className={`block py-1 px-3 focus:bg-gray-200 focus:outline-none`}
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
-            onClick={handleClick}
          >
             {item.fullName}
          </Link>
@@ -94,12 +90,11 @@ export default function SearchPatient() {
    return (
       <div className="relative">
          <label className="relative text-gray-400 block">
-            <MdSearch className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-300" />
+            <MdSearch className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400" />
             <input
                className="
-               rounded w-full border-none bg-slate-500 text-base text-gray-200 p-1
-               placeholder:italic placeholder:text-gray-300 placeholder:text-sm pl-8
-               focus:bg-white focus:text-slate-800"
+               rounded w-full border-gray-400 text-base
+               placeholder:italic placeholder:text-gray-400 placeholder:text-sm pl-7 text-gray-500 p-1"
                placeholder="Digite o nome do paciente…"
                type="text"
                value={value}
@@ -119,7 +114,7 @@ export default function SearchPatient() {
          {suggestions.length > 0 &&
             <div
                ref={suggestionsRef}
-               className="absolute shadow-lg w-full rounded mt-1 py-1 text-lg bg-white opacity-95"
+               className="absolute w-full rounded border border-gray-400 mt-1 text-lg bg-white text-gray-700"
             >
                {suggestionsEl}
             </div>
