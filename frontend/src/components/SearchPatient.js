@@ -1,9 +1,13 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState, useContext, useRef } from "react"
 import { Link } from "react-router-dom"
+
+import { Context } from "../Context"
 
 import { MdOutlinePersonSearch, MdClose } from "react-icons/md"
 
 export default function SearchPatient() {
+
+   const { formatDate } = useContext(Context)
 
    const inputRef = useRef()
    const suggestionsRef = useRef()
@@ -66,7 +70,7 @@ export default function SearchPatient() {
    function startOver() { // Reset everything
       setSuggestions([])
       setValue("")
-      inputRef.current.blur()
+      inputRef.current?.blur()
    }
 
    function handleChange(event) {
@@ -82,12 +86,16 @@ export default function SearchPatient() {
          <Link
             to={`/patients/${item._id}`}
             key={item._id}
-            className="block bg-white text-slate-900 py-1 px-3 focus:bg-slate-600 focus:outline-none focus:text-white text-base"
+            className="block bg-white text-black py-1 px-3 focus:bg-slate-600 focus:outline-none focus:text-white text-base"
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
             onClick={startOver}
          >
             {item.fullName}
+            <div className="text-sm">
+               <span className="font-serif uppercase text-xs">Nasc.:</span> {formatDate(item.dateOfBirth, "shorter")}
+               <span className="font-serif uppercase text-xs ml-2">Registro:</span> {item._id}
+            </div>
          </Link>
       )
    })

@@ -22,11 +22,13 @@ function ContextProvider({ children }) {
       const isoDate = new Date(date)
       let options
       let formattedDate
-      if (format === "short") {
-         options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-         formattedDate = isoDate.toLocaleString('pt-BR')
+      if (format === "shorter") {
+         formattedDate = isoDate.toLocaleDateString("pt-BR")
+      } else if (format === "short") {
+         options = { weekday: "long", year: "numeric", month: "long", day: "numeric" }
+         formattedDate = isoDate.toLocaleString("pt-BR")
       } else if (format === "long") {
-         options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+         options = { weekday: "long", year: "numeric", month: "long", day: "numeric" }
          formattedDate = isoDate.toLocaleDateString('pt-BR', options)
       }
       return formattedDate
