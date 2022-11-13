@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react"
+import { Link } from "react-router-dom"
 
-import { MdSearch } from "react-icons/md"
+import { MdSearch, MdClose } from "react-icons/md"
 
 export default function SearchPatient() {
 
@@ -12,14 +13,14 @@ export default function SearchPatient() {
 
    useEffect(() => {
       if (suggestions.length > 0) {
-         document.body.addEventListener('keydown', onKeyDown);
+         document.body.addEventListener("keydown", onKeyDown)
       } else {
-         document.body.removeEventListener('keydown', onKeyDown);
+         document.body.removeEventListener("keydown", onKeyDown)
       }
       return () => {
-         document.body.removeEventListener('keydown', onKeyDown);
+         document.body.removeEventListener("keydown", onKeyDown)
       }
-   }, [suggestions]);
+   }, [suggestions])
 
    function onKeyDown(event) {
       const isDown = event.key === "ArrowDown"
@@ -57,6 +58,13 @@ export default function SearchPatient() {
       }
    }
 
+   function handleMouseOver(event) {
+      event.target.focus()
+   }
+   function handleMouseOut(event) {
+      event.target.blur()
+   }
+
    function handleChange(event) {
       let newValue = event.target.value
       setValue(newValue)
@@ -67,22 +75,25 @@ export default function SearchPatient() {
 
    const suggestionsEl = suggestions.map(item => {
       return (
-         <a
-            href="#"
+         <Link
+            to={`/patients/${item._id}`}
             key={item._id}
-            className={`block py-1 px-3 focus:bg-gray-200`}
+            className={`block py-1 px-3 focus:bg-gray-200 focus:outline-none`}
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
          >
             {item.fullName}
-         </a>
+         </Link>
       )
    })
 
    return (
       <div>
          <label className="relative text-gray-400 block">
-            <MdSearch className="pointer-events-none w-8 h-8 absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400" />
+            <MdSearch className="pointer-events-none w-7 h-7 absolute top-1/2 transform -translate-y-1/2 left-2 text-gray-400" />
             <input
                className="
+               rounded
                w-full border-gray-400 text-lg
                placeholder:italic pl-10 text-gray-700"
                placeholder="Digite o nome do paciente"
@@ -90,10 +101,20 @@ export default function SearchPatient() {
                value={value}
                onChange={handleChange}
                ref={inputRef}
+               autoFocus
             />
+            {value &&
+               <MdClose
+                  className="w-4 h-4 absolute top-1/2 transform -translate-y-1/2 right-3 text-gray-400 cursor-pointer"
+                  onClick={() => {
+                     setValue("")
+                     setSuggestions([])
+                  }}
+               />
+            }
          </label>
          {suggestions.length > 0 &&
-            <div ref={suggestionsRef} className="border border-gray-400 mt-2 text-lg">
+            <div ref={suggestionsRef} className="rounded border border-gray-400 mt-2 text-lg">
                {suggestionsEl}
             </div>
          }
