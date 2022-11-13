@@ -9,38 +9,24 @@ mongoose.connect(keys.mongoURI)
 
 // Patient search
 app.get("/api/search/patients", async (req, res) => {
-   let result = await Patient.aggregate(
-      [
-         {
-            $search: {
-               compound: {
-                  should: [
-                     {
-                        autocomplete: {
-                           path: "_id",
-                           query: `${req.query.q}`
-                        }
-                     },
-                     {
-                        autocomplete: {
-                           path: "fullName",
-                           query: `${req.query.q}`
-                        }
-                     }
-                  ]
-               }
-            }
-         }, {
-            $limit: 10
-         }, {
-            $project: {
-               _id: 1,
-               fullName: 1,
-               dateOfBirth: 1
+   let result = await Patient.aggregate([
+      {
+         $search: {
+            "autocomplete": {
+               "path": "fullName",
+               "query": `${req.query.q}`
             }
          }
-      ]
-   )
+      }, {
+         $limit: 10
+      }, {
+         $project: {
+            "_id": 1,
+            "fullName": 1,
+            "dateOfBirth": 1
+         }
+      }
+   ])
    res.send(result)
 })
 
