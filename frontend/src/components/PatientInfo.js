@@ -19,7 +19,7 @@ export default function PatientInfo(props) {
    return (
       <div className="bg-slate-700 text-white">
          <div id="patient-info" className="pt-2 pb-3 px-4 flex items-baseline">
-            <MdAccountCircle className="mr-2 text-2xl self-center" />
+            <MdAccountCircle className="w-7 h-7 mr-1 self-center" />
             <h2 id="patient-name" className="text-2xl mr-3 font-serif">
                {thisPatient.fullName}
             </h2>
