@@ -4,9 +4,8 @@ import { Link, useParams, Outlet } from "react-router-dom"
 import { Context } from "../../Context"
 
 import Header from "../../components/Header"
-import PatientSidebar from "../../components/PatientSidebar"
-import PatientInfo from "../../components/PatientInfo"
-import SearchPatient from "../../components/SearchPatient"
+import Sidebar from "../../components/patients/Sidebar"
+import Info from "../../components/patients/Info"
 
 export default function Patient() {
 
@@ -24,15 +23,12 @@ export default function Patient() {
    return (
       <div className="">
          <Header />
-         <div className="bg-slate-700 text-white p-2 pb-1">
-            <SearchPatient />
-         </div>
          <div className="">
-            <PatientInfo />
+            <Info />
          </div>
          <div className="flex">
             <div className="w-1/6">
-               <PatientSidebar />
+               <Sidebar />
             </div>
             <div className="w-full">
                <Outlet />

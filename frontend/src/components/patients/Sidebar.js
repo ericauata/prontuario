@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { NavLink, useParams } from "react-router-dom"
 
-import { Context } from "../Context"
+import { Context } from "../../Context"
 
 import { UilListUl } from "@iconscout/react-unicons"
 import { UilFolderExclamation } from "@iconscout/react-unicons"
@@ -11,7 +11,7 @@ import { UilBed } from "@iconscout/react-unicons"
 import { UilStethoscope } from "@iconscout/react-unicons"
 import { UilFilePlusAlt } from "@iconscout/react-unicons"
 
-export default function PatientSidebar(props) {
+export default function Sidebar(props) {
 
    const { thisPatient } = useContext(Context)
    const patientPath = `/patients/${thisPatient._id}`

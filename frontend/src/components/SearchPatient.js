@@ -18,11 +18,11 @@ export default function SearchPatient(props) {
 
    const stylesObj = {
       labelStyles: "relative text-gray-400 block",
-      inputStyles: "rounded w-full border-none bg-slate-600 text-base text-gray-200 p-1 placeholder:italic placeholder:text-slate-400 placeholder:text-sm pl-8 focus:bg-white focus:text-slate-800 focus:placeholder:text-slate-500",
+      inputStyles: "rounded w-full border-none bg-slate-600 text-base text-gray-200 p-1 placeholder:italic placeholder:text-slate-400 placeholder:text-base pl-8 focus:bg-slate-900 focus:text-white focus:placeholder:text-slate-500",
       searchIconStyles: "pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-2 text-slate-400",
       closeIconStyles: "w-4 h-4 absolute top-1/2 transform -translate-y-1/2 right-3 text-gray-400 cursor-pointer",
-      suggestionsBoxStyles: "absolute shadow-lg w-full rounded mt-1 text-lg bg-white opacity-95",
-      itemStyles: "block text-black py-1 px-3 focus:bg-slate-600 focus:outline-none focus:text-white text-base focus:first:rounded-t focus:last:rounded-b",
+      suggestionsBoxStyles: "absolute shadow-lg w-full rounded mt-1 text-base bg-slate-800",
+      itemStyles: "block text-slate-100 py-2 px-3 focus:bg-slate-200 focus:outline-none focus:text-black text-base focus:first:rounded-t focus:last:rounded-b",
       itemDetailBoxStyles: "text-sm",
       itemDetailStyles: "font-serif uppercase text-xs ml-2 first:ml-0"
    }

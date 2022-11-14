@@ -3,14 +3,16 @@ import { Routes, Route } from "react-router-dom"
 
 import "./index.css"
 
-import Header from "./components/Header"
 import Home from "./pages/Home"
+
 import Patient from "./pages/patients/Patient"
 import Timeline from "./pages/patients/Timeline"
 import EventsByCategory from "./pages/patients/EventsByCategory"
 import EventDetails from "./pages/patients/EventDetails"
 import Profile from "./pages/patients/Profile"
 import CurrentDiagnosis from "./pages/patients/CurrentDiagnosis"
+
+import Emergency from "./pages/emergency/Emergency"
 
 export default function App() {
    return (
@@ -28,6 +30,10 @@ export default function App() {
                      <Route path="categories/:categoryId" element={<EventsByCategory />}>
                         <Route path="events/:eventId" element={<EventDetails />} />
                      </Route>
+                  </Route>
+
+                  <Route path="/emergency" element={<Emergency />}>
+
                   </Route>
 
                </Routes>

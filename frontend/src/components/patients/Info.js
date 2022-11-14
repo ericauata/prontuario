@@ -1,11 +1,11 @@
 import React, { useContext } from "react"
 import { Link, NavLink, useParams } from "react-router-dom"
 
-import { Context } from "../Context"
+import { Context } from "../../Context"
 
 import { UilUserCircle } from "@iconscout/react-unicons"
 
-export default function PatientInfo(props) {
+export default function Info(props) {
 
    const { thisPatient, getAge } = useContext(Context)
 
