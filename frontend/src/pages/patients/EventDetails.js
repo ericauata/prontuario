@@ -16,7 +16,9 @@ export default function EventDetails() {
 
    return (
       <div className="p-4">
-         <h2 className="text-xl uppercase mb-7 font-serif">{thisEvent && thisEvent.category.name} de {thisEvent && thisEvent.specialty}</h2>
+         <h2 className="text-xl mb-7 font-serif">{thisEvent && thisEvent.category.name} de {thisEvent && thisEvent.specialty}</h2>
+
+
       </div>
    )
 }

@@ -28,10 +28,10 @@ export default function Header() {
             <div id="logo" className="text-2xl font-serif my-1">
                <Link to="/" className="text-white flex items-center">
                   <UilCell className="mr-1 w-7 h-7" />
-                  <div className="pt-1">PRONTUÁRIO EW</div>
+                  PRONTUÁRIO EW
                </Link>
             </div>
-            <div className="mr-1 w-1/4">
+            <div className="mr-2 w-1/4">
                <SearchPatient />
             </div>
          </div>
