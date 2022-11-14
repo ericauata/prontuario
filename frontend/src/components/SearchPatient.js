@@ -3,7 +3,8 @@ import { Link } from "react-router-dom"
 
 import { Context } from "../Context"
 
-import { MdOutlinePersonSearch, MdClose } from "react-icons/md"
+import PersonSearchOutlinedIcon from "@mui/icons-material/PersonSearchOutlined"
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined"
 
 export default function SearchPatient(props) {
 
@@ -129,7 +130,7 @@ export default function SearchPatient(props) {
    return (
       <div className="relative">
          <label className={styles.labelStyles}>
-            <MdOutlinePersonSearch className={styles.searchIconStyles} />
+            <PersonSearchOutlinedIcon className={styles.searchIconStyles} />
             <input
                className={styles.inputStyles}
                placeholder="Digite o nome do paciente…"
@@ -140,7 +141,7 @@ export default function SearchPatient(props) {
                onClick={(event) => event.stopPropagation()}
             />
             {value &&
-               <MdClose
+               <CloseOutlinedIcon
                   className={styles.closeIconStyles}
                   onClick={() => {
                      setValue("")

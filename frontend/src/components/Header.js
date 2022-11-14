@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-import { MdSpa } from "react-icons/md"
+import SpaIcon from "@mui/icons-material/Spa"
 
 export default function Header() {
 
@@ -18,7 +18,7 @@ export default function Header() {
             </nav>
             <h1 id="logo" className="text-xl font-serif my-2 mx-4 mr-4">
                <Link to="/" className="text-white flex items-center">
-                  <MdSpa className="mr-1 text-2xl" />
+                  <SpaIcon className="mr-1 text-2xl" />
                   PRONTUÁRIO EW
                </Link>
             </h1>

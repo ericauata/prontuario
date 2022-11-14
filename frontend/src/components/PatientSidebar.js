@@ -3,10 +3,11 @@ import { NavLink, useParams } from "react-router-dom"
 
 import { Context } from "../Context"
 
-import { MdOutlineCreateNewFolder } from "react-icons/md";
-import { MdOutlineFolderShared } from "react-icons/md"
-import { MdOutlineFormatListBulleted } from "react-icons/md"
-import { MdOutlineChair } from "react-icons/md"
+import CreateNewFolderOutlinedIcon from "@mui/icons-material/CreateNewFolderOutlined"
+import FolderSharedOutlinedIcon from "@mui/icons-material/FolderSharedOutlined"
+import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBulletedOutlined"
+import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined"
+
 
 export default function PatientSidebar(props) {
 
@@ -22,7 +23,7 @@ export default function PatientSidebar(props) {
                   className={
                      ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-sky-600 font-bold py-2 px-2 border-l-8 border-sky-600" : "py-2 px-4 flex items-center"
                   }>
-                  <MdOutlineFormatListBulleted className="mr-1 text-xl" />
+                  <FormatListBulletedOutlinedIcon className="mr-1 text-xl" />
                   Eventos recentes
                </NavLink>
             </li>
@@ -32,7 +33,7 @@ export default function PatientSidebar(props) {
                   className={
                      ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-sky-600 font-bold py-2 px-2 border-l-8 border-sky-600" : "py-2 px-4 flex items-center"
                   }>
-                  <MdOutlineCreateNewFolder className="mr-1 text-xl" />
+                  <CreateNewFolderOutlinedIcon className="mr-1 text-xl" />
                   Diagnósticos atuais
                </NavLink>
             </li>
@@ -42,7 +43,7 @@ export default function PatientSidebar(props) {
                   className={
                      ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-sky-600 font-bold py-2 px-2 border-l-8 border-sky-600" : "py-2 px-4 flex items-center"
                   }>
-                  <MdOutlineChair className="mr-1 text-xl" />
+                  <ChairOutlinedIcon className="mr-1 text-xl" />
                   Ambulatório
                </NavLink>
             </li>
@@ -52,7 +53,7 @@ export default function PatientSidebar(props) {
                   className={
                      ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-sky-600 font-bold py-2 px-2 border-l-8 border-sky-600" : "py-2 px-4 flex items-center"
                   }>
-                  <MdOutlineFolderShared className="mr-1 text-xl" />
+                  <FolderSharedOutlinedIcon className="mr-1 text-xl" />
                   Dados pessoais
                </NavLink>
             </li>
