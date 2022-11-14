@@ -3,11 +3,13 @@ import { NavLink, useParams } from "react-router-dom"
 
 import { Context } from "../Context"
 
-import CreateNewFolderOutlinedIcon from "@mui/icons-material/CreateNewFolderOutlined"
-import FolderSharedOutlinedIcon from "@mui/icons-material/FolderSharedOutlined"
-import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBulletedOutlined"
-import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined"
-
+import { UilListUl } from "@iconscout/react-unicons"
+import { UilFolderExclamation } from "@iconscout/react-unicons"
+import { UilUserSquare } from "@iconscout/react-unicons"
+import { UilHeartRate } from "@iconscout/react-unicons"
+import { UilBed } from "@iconscout/react-unicons"
+import { UilStethoscope } from "@iconscout/react-unicons"
+import { UilFilePlusAlt } from "@iconscout/react-unicons"
 
 export default function PatientSidebar(props) {
 
@@ -23,7 +25,7 @@ export default function PatientSidebar(props) {
                   className={
                      ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-sky-600 font-bold py-2 px-2 border-l-8 border-sky-600" : "py-2 px-4 flex items-center"
                   }>
-                  <FormatListBulletedOutlinedIcon className="mr-1 text-xl" />
+                  <UilListUl className="mr-1 text-xl" />
                   Eventos recentes
                </NavLink>
             </li>
@@ -33,7 +35,7 @@ export default function PatientSidebar(props) {
                   className={
                      ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-sky-600 font-bold py-2 px-2 border-l-8 border-sky-600" : "py-2 px-4 flex items-center"
                   }>
-                  <CreateNewFolderOutlinedIcon className="mr-1 text-xl" />
+                  <UilFolderExclamation className="mr-1 text-xl" />
                   Diagnósticos atuais
                </NavLink>
             </li>
@@ -43,7 +45,7 @@ export default function PatientSidebar(props) {
                   className={
                      ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-sky-600 font-bold py-2 px-2 border-l-8 border-sky-600" : "py-2 px-4 flex items-center"
                   }>
-                  <ChairOutlinedIcon className="mr-1 text-xl" />
+                  <UilStethoscope className="mr-1 text-xl" />
                   Ambulatório
                </NavLink>
             </li>
@@ -53,7 +55,7 @@ export default function PatientSidebar(props) {
                   className={
                      ({ isActive }) => isActive ? "flex items-center bg-slate-100 text-sky-600 font-bold py-2 px-2 border-l-8 border-sky-600" : "py-2 px-4 flex items-center"
                   }>
-                  <FolderSharedOutlinedIcon className="mr-1 text-xl" />
+                  <UilUserSquare className="mr-1 text-xl" />
                   Dados pessoais
                </NavLink>
             </li>

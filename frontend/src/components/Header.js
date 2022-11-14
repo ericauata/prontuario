@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-import SpaIcon from "@mui/icons-material/Spa"
+import { UilCell } from "@iconscout/react-unicons"
 
 export default function Header() {
 
@@ -16,10 +16,10 @@ export default function Header() {
                   <a href="">Emergência</a>
                </div>
             </nav>
-            <h1 id="logo" className="text-xl font-serif my-2 mx-4 mr-4">
+            <h1 id="logo" className="text-xl font-serif my-1 mr-4">
                <Link to="/" className="text-white flex items-center">
-                  <SpaIcon className="mr-1 text-2xl" />
-                  PRONTUÁRIO EW
+                  <UilCell className="mr-1 w-7 h-7" />
+                  <div className="pt-1">PRONTUÁRIO EW</div>
                </Link>
             </h1>
          </div>

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 
 import { Context } from "../Context"
 
-import PersonSearchOutlinedIcon from "@mui/icons-material/PersonSearchOutlined"
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined"
+import { UilSearch } from "@iconscout/react-unicons"
+import { UilTimes } from "@iconscout/react-unicons"
 
 export default function SearchPatient(props) {
 
@@ -33,7 +33,7 @@ export default function SearchPatient(props) {
       if (props.section === "home") {
          setStyles(prevStyles => ({
             ...prevStyles,
-            inputStyles: "rounded w-full border-none bg-slate-600 text-lg text-gray-200 p-3 placeholder:italic placeholder:text-slate-400 placeholder:text-lg pl-11 focus:bg-slate-900 focus:text-white focus:placeholder:text-slate-500",
+            inputStyles: "rounded w-full border-none bg-slate-600 text-lg text-gray-200 p-3 placeholder:italic placeholder:text-slate-400 placeholder:text-lg pl-12 focus:bg-slate-900 focus:text-white focus:placeholder:text-slate-500",
             searchIconStyles: "pointer-events-none w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-4 text-slate-400",
             itemStyles: "block text-slate-100 py-2 px-3 text-base focus:bg-slate-200 focus:outline-none focus:text-black focus:first:rounded-t focus:last:rounded-b",
             suggestionsBoxStyles: "absolute shadow-lg w-full rounded mt-2 text-lg bg-slate-600",
@@ -130,7 +130,7 @@ export default function SearchPatient(props) {
    return (
       <div className="relative">
          <label className={styles.labelStyles}>
-            <PersonSearchOutlinedIcon className={styles.searchIconStyles} />
+            <UilSearch className={styles.searchIconStyles} />
             <input
                className={styles.inputStyles}
                placeholder="Digite o nome do paciente…"
@@ -141,7 +141,7 @@ export default function SearchPatient(props) {
                onClick={(event) => event.stopPropagation()}
             />
             {value &&
-               <CloseOutlinedIcon
+               <UilTimes
                   className={styles.closeIconStyles}
                   onClick={() => {
                      setValue("")
