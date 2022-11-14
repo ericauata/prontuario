@@ -11,7 +11,7 @@ import { UilBed } from "@iconscout/react-unicons"
 import { UilStethoscope } from "@iconscout/react-unicons"
 import { UilFilePlusAlt } from "@iconscout/react-unicons"
 
-export default function Sidebar(props) {
+export default function PatientSidebar(props) {
 
    const { thisPatient } = useContext(Context)
    const patientPath = `/patients/${thisPatient._id}`

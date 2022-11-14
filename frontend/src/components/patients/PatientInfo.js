@@ -5,7 +5,7 @@ import { Context } from "../../Context"
 
 import { UilUserCircle } from "@iconscout/react-unicons"
 
-export default function Info(props) {
+export default function PatientInfo(props) {
 
    const { thisPatient, getAge } = useContext(Context)
 
