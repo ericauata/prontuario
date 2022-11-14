@@ -5,7 +5,7 @@ import { Context } from "../Context"
 
 import { MdOutlinePersonSearch, MdClose } from "react-icons/md"
 
-export default function SearchPatient() {
+export default function SearchPatient(props) {
 
    const { formatDate } = useContext(Context)
 
@@ -14,6 +14,31 @@ export default function SearchPatient() {
 
    const [value, setValue] = useState("")
    const [suggestions, setSuggestions] = useState([])
+
+   const stylesObj = {
+      labelStyles: "relative text-gray-400 block",
+      inputStyles: "rounded w-full border-none bg-slate-600 text-base text-gray-200 p-1 placeholder:italic placeholder:text-slate-400 placeholder:text-sm pl-8 focus:bg-white focus:text-slate-800 focus:placeholder:text-slate-500",
+      searchIconStyles: "pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-2 text-slate-400",
+      closeIconStyles: "w-4 h-4 absolute top-1/2 transform -translate-y-1/2 right-3 text-gray-400 cursor-pointer",
+      suggestionsBoxStyles: "absolute shadow-lg w-full rounded mt-1 text-lg bg-white opacity-95",
+      itemStyles: "block text-black py-1 px-3 focus:bg-slate-600 focus:outline-none focus:text-white text-base focus:first:rounded-t focus:last:rounded-b",
+      itemDetailBoxStyles: "text-sm",
+      itemDetailStyles: "font-serif uppercase text-xs ml-2 first:ml-0"
+   }
+
+   const [styles, setStyles] = useState(stylesObj)
+
+   useEffect(() => {
+      if (props.section === "home") {
+         setStyles(prevStyles => ({
+            ...prevStyles,
+            inputStyles: "rounded w-full border-none bg-slate-600 text-lg text-gray-200 p-3 placeholder:italic placeholder:text-slate-400 placeholder:text-lg pl-11 focus:bg-slate-900 focus:text-white focus:placeholder:text-slate-500",
+            searchIconStyles: "pointer-events-none w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-4 text-slate-400",
+            itemStyles: "block text-slate-100 py-2 px-3 text-base focus:bg-slate-200 focus:outline-none focus:text-black focus:first:rounded-t focus:last:rounded-b",
+            suggestionsBoxStyles: "absolute shadow-lg w-full rounded mt-2 text-lg bg-slate-600",
+         }))
+      }
+   }, [props.section])
 
    useEffect(() => {
       if (suggestions.length > 0) {
@@ -41,7 +66,6 @@ export default function SearchPatient() {
          event.preventDefault()
          if (inputIsFocused) {
             suggestionsItems[suggestionsItems.length - 1].focus()
-            console.log("Suggestions items:", activeItemIndex)
          } else if (suggestionsItems[activeItemIndex - 1]) {
             suggestionsItems[activeItemIndex - 1].focus()
          } else {
@@ -86,15 +110,17 @@ export default function SearchPatient() {
          <Link
             to={`/patients/${item._id}`}
             key={item._id}
-            className="block bg-white text-black py-1 px-3 focus:bg-slate-600 focus:outline-none focus:text-white text-base"
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
+            className={styles.itemStyles}
+            onMouseEnter={handleMouseOver}
+            onMouseLeave={handleMouseOut}
             onClick={startOver}
          >
-            {item.fullName}
-            <div className="text-sm">
-               <span className="font-serif uppercase text-xs">Nasc.:</span> {formatDate(item.dateOfBirth, "shorter")}
-               <span className="font-serif uppercase text-xs ml-2">Registro:</span> {item._id}
+            <div>
+               {item.fullName}
+            </div>
+            <div className={styles.itemDetailBoxStyles}>
+               <span className={styles.itemDetailStyles}>Data de Nasc.:</span> {formatDate(item.dateOfBirth, "shorter")}
+               <span className={styles.itemDetailStyles}>Registro:</span> {item._id}
             </div>
          </Link>
       )
@@ -102,13 +128,10 @@ export default function SearchPatient() {
 
    return (
       <div className="relative">
-         <label className="relative text-gray-400 block">
-            <MdOutlinePersonSearch className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-2 text-slate-400" />
+         <label className={styles.labelStyles}>
+            <MdOutlinePersonSearch className={styles.searchIconStyles} />
             <input
-               className="
-               rounded w-full border-none bg-slate-600 text-base text-gray-200 p-1
-               placeholder:italic placeholder:text-slate-400 placeholder:text-sm pl-8
-               focus:bg-white focus:text-slate-800 focus:placeholder:text-slate-500"
+               className={styles.inputStyles}
                placeholder="Digite o nome do paciente…"
                type="text"
                value={value}
@@ -118,7 +141,7 @@ export default function SearchPatient() {
             />
             {value &&
                <MdClose
-                  className="w-4 h-4 absolute top-1/2 transform -translate-y-1/2 right-3 text-gray-400 cursor-pointer"
+                  className={styles.closeIconStyles}
                   onClick={() => {
                      setValue("")
                      setSuggestions([])
@@ -129,7 +152,7 @@ export default function SearchPatient() {
          {suggestions.length > 0 &&
             <div
                ref={suggestionsRef}
-               className="absolute shadow-lg w-full rounded mt-1 py-1 text-lg bg-white opacity-95"
+               className={styles.suggestionsBoxStyles}
                onClick={(event) => event.stopPropagation()}
             >
                {suggestionsEl}

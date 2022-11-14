@@ -12,18 +12,18 @@ app.get("/api/search/patients", async (req, res) => {
    let result = await Patient.aggregate([
       {
          $search: {
-            "autocomplete": {
-               "path": "fullName",
-               "query": `${req.query.q}`
+            autocomplete: {
+               path: "fullName",
+               query: `${req.query.q}`
             }
          }
       }, {
          $limit: 10
       }, {
          $project: {
-            "_id": 1,
-            "fullName": 1,
-            "dateOfBirth": 1
+            _id: 1,
+            fullName: 1,
+            dateOfBirth: 1
          }
       }
    ])
@@ -31,10 +31,10 @@ app.get("/api/search/patients", async (req, res) => {
 })
 
 // Get 10 latest updated patients
-app.get("/api/patients/popular", async (req, res) => {
-   const patients = await Patient.find().sort({ updatedAt: -1 }).limit(10)
-   res.send(patients)
-})
+// app.get("/api/patients/popular", async (req, res) => {
+//    const patients = await Patient.find().sort({ updatedAt: -1 }).limit(10)
+//    res.send(patients)
+// })
 
 // Get patient main info
 app.get("/api/patients/:patientId", async (req, res) => {

@@ -16,7 +16,7 @@ export default function Home() {
                PRONTUÁRIO EW
             </h1>
             <div className="mt-10 w-full">
-               <SearchPatient />
+               <SearchPatient section="home" />
             </div>
             <div className="w-full flex flex-row items-stretch mt-10">
                <Link
