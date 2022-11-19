@@ -20,6 +20,7 @@ const patientSchema = new Schema(
       fullName: String,
       dateOfBirth: { type: Date },
       currentDiagnosis: [{
+         _id: Schema.Types.ObjectId,
          name: String,
          body: String
       }]

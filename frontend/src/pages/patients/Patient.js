@@ -9,7 +9,7 @@ import PatientInfo from "../../components/patients/PatientInfo"
 
 export default function Patient() {
 
-   const { thisPatient, setThisPatient } = useContext(Context)
+   const { thisPatient, setThisPatient, isPatientUpdated } = useContext(Context)
    const { patientId } = useParams()
 
    useEffect(() => {
@@ -18,7 +18,7 @@ export default function Patient() {
          .then(data => {
             setThisPatient(data)
          })
-   }, [patientId])
+   }, [patientId, isPatientUpdated])
 
    return (
       <div className="">

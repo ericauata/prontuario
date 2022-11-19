@@ -5,6 +5,8 @@ import { Category, Event, Patient } from "./models/Schemas.js"
 
 const app = express()
 
+app.use(express.json())
+
 mongoose.connect(keys.mongoURI)
 
 // Patient search
@@ -36,6 +38,49 @@ app.get("/api/search/patients", async (req, res) => {
 //    res.send(patients)
 // })
 
+// Add new patient
+app.post("/api/patients", async (req, res) => {
+   const newPatient = new Patient({
+      fullName: req.body.fullName,
+      dateOfBirth: req.body.dateOfBirth
+   })
+   const createdPatient = await newPatient.save()
+   res.json(createdPatient)
+})
+
+// Delete diagnosis
+app.put("/api/patients/:patientId/diagnosis/:diagnosisId", async (req, res) => {
+   const patientId = req.params.patientId
+   const diagnosisId = req.params.diagnosisId
+   const patient = await Patient.findOneAndUpdate(
+      { _id: patientId },
+      {
+         $pull: {
+            currentDiagnosis: {
+               _id: diagnosisId
+            }
+         }
+      }
+   )
+})
+
+// Edit diagnosis
+app.put("/api/patients/:patientId", async (req, res) => {
+   const patientId = req.params.patientId
+   const patient = await Patient.findOneAndUpdate(
+      { _id: patientId },
+      {
+         $push: {
+            "currentDiagnosis": {
+               _id: new mongoose.Types.ObjectId,
+               name: req.body.name,
+               body: req.body.body
+            }
+         }
+      }
+   )
+})
+
 // Get patient main info
 app.get("/api/patients/:patientId", async (req, res) => {
    const patientId = req.params.patientId
@@ -62,8 +107,6 @@ app.get("/api/patients/:patientId/categories/:categoryId", async (req, res) => {
       })
    res.send(events)
 })
-
-// Hey
 
 import path from "path"
 import { fileURLToPath } from "url"

@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom"
 import "./index.css"
 
 import Home from "./pages/Home"
-
+import NewPatient from "./pages/patients/NewPatient"
 import Patient from "./pages/patients/Patient"
 import Timeline from "./pages/patients/Timeline"
 import EventsByCategory from "./pages/patients/EventsByCategory"
@@ -22,6 +22,8 @@ export default function App() {
                <Routes>
 
                   <Route exact path="/" element={<Home />} />
+
+                  <Route path="/patients/new" element={<NewPatient />} />
 
                   <Route path="/patients/:patientId" element={<Patient />}>
                      <Route path="events/timeline" element={<Timeline />} />

@@ -9,9 +9,15 @@ export default function PatientInfo(props) {
 
    const { thisPatient, getAge } = useContext(Context)
 
-   const diagnosisEl = thisPatient.currentDiagnosis?.map(item => (
-      <Link to="" key={item._id} className="underline">{item.name}</Link>
-   )).reduce((prev, curr) => [prev, ', ', curr])
+   function diagnosisEl() {
+      if (thisPatient.currentDiagnosis?.length > 0) {
+         return thisPatient.currentDiagnosis.map(item => (
+            item.name
+         )).join(", ")
+      } else {
+         return "nenhum"
+      }
+   }
 
    return (
       <div className="bg-slate-700 text-white">
@@ -31,7 +37,7 @@ export default function PatientInfo(props) {
                </div>
                <div className="">
                   <span className="text-slate-300 font-serif">Diagnósticos: </span>
-                  <span className="">{diagnosisEl}</span>
+                  <span className="">{diagnosisEl()}</span>
                </div>
             </div>
          </div>

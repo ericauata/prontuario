@@ -5,6 +5,7 @@ const Context = React.createContext()
 function ContextProvider({ children }) {
 
    const [thisPatient, setThisPatient] = useState({})
+   const [isPatientUpdated, setIsPatientUpdated] = useState(false)
    const [events, setEvents] = useState([])
 
    function getAge(date) {
@@ -38,6 +39,8 @@ function ContextProvider({ children }) {
       <Context.Provider value={{
          thisPatient,
          setThisPatient,
+         isPatientUpdated,
+         setIsPatientUpdated,
          events,
          setEvents,
          getAge,
