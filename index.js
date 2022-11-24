@@ -81,6 +81,15 @@ app.put("/api/patients/:patientId", async (req, res) => {
    )
 })
 
+
+
+// Get patient diagnosis
+app.get("/api/patients/:patientId/diagnosis", async (req, res) => {
+   const patientId = req.params.patientId
+   const patient = await Patient.findById(patientId)
+   res.send(patient.currentDiagnosis)
+})
+
 // Get patient main info
 app.get("/api/patients/:patientId", async (req, res) => {
    const patientId = req.params.patientId

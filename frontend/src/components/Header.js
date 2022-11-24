@@ -8,7 +8,7 @@ import { UilCell } from "@iconscout/react-unicons"
 
 export default function Header() {
 
-   const { thisPatient, setThisPatient } = useContext(Context)
+   const { patient } = useContext(Context)
 
    const tabStyles = "uppercase font-bold text-sm rounded-t mt-2 mr-1 text-white px-5 flex items-center"
    const tabActiveStyles = "uppercase font-bold text-sm bg-slate-700 rounded-t mt-2 mr-1 text-white px-5 flex items-center"
@@ -17,8 +17,8 @@ export default function Header() {
       <header className="">
          <div className="bg-slate-900 flex justify-between items-center">
             <nav className="flex self-stretch items-stretch ml-2">
-               {Object.keys(thisPatient).length !== 0 &&
-                  <NavLink to={`/patients/${thisPatient._id}`} className={({ isActive }) => isActive ? tabActiveStyles : tabStyles}>
+               {Object.keys(patient).length !== 0 &&
+                  <NavLink to={`/patients/${patient._id}`} className={({ isActive }) => isActive ? tabActiveStyles : tabStyles}>
                      Paciente
                   </NavLink>
                }

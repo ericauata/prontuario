@@ -4,8 +4,9 @@ const Context = React.createContext()
 
 function ContextProvider({ children }) {
 
-   const [thisPatient, setThisPatient] = useState({})
-   const [isPatientUpdated, setIsPatientUpdated] = useState(false)
+   const [patient, setPatient] = useState({})
+   const [diagnosis, setDiagnosis] = useState({})
+   const [patientUpdated, setPatientUpdated] = useState(false)
    const [events, setEvents] = useState([])
 
    function getAge(date) {
@@ -37,10 +38,12 @@ function ContextProvider({ children }) {
 
    return (
       <Context.Provider value={{
-         thisPatient,
-         setThisPatient,
-         isPatientUpdated,
-         setIsPatientUpdated,
+         patient,
+         setPatient,
+         diagnosis,
+         setDiagnosis,
+         patientUpdated,
+         setPatientUpdated,
          events,
          setEvents,
          getAge,

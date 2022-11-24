@@ -16,8 +16,8 @@ export default function PatientSidebar(props) {
    const menuStyles = "py-2 px-4 flex items-center"
    const menuActiveStyles = "flex items-center bg-slate-700 text-white py-2 px-4"
 
-   const { thisPatient } = useContext(Context)
-   const patientPath = `/patients/${thisPatient._id}`
+   const { patient } = useContext(Context)
+   const patientPath = `/patients/${patient._id}`
 
    return (
       <nav className="bg-slate-600 h-screen text-white pt-4">

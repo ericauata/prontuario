@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react"
-import { Link, useParams, Outlet } from "react-router-dom"
+import { useParams, Outlet } from "react-router-dom"
 
 import { Context } from "../../Context"
 
@@ -9,16 +9,17 @@ import PatientInfo from "../../components/patients/PatientInfo"
 
 export default function Patient() {
 
-   const { thisPatient, setThisPatient, isPatientUpdated } = useContext(Context)
    const { patientId } = useParams()
+   const { setPatient, setDiagnosis } = useContext(Context)
 
    useEffect(() => {
       fetch(`/api/patients/${patientId}`)
          .then(res => res.json())
          .then(data => {
-            setThisPatient(data)
+            setPatient(data)
+            setDiagnosis(data.currentDiagnosis)
          })
-   }, [patientId, isPatientUpdated])
+   }, [patientId])
 
    return (
       <div className="">
