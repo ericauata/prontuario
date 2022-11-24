@@ -5,8 +5,9 @@ import { Context } from "../../Context"
 export default function Timeline() {
 
    const { formatDate, thisPatient } = useContext(Context)
-   const [timeline, setTimeline] = useState([])
    const { patientId } = useParams()
+
+   const [timeline, setTimeline] = useState([])
    const [searchParams, setSearchParams] = useSearchParams()
 
    const numOfEvents = searchParams.get("n")
@@ -42,7 +43,7 @@ export default function Timeline() {
    })
 
    return (
-      <div className="p-4">
+      <div className="p-4 h-screen">
          {timelineEl}
       </div>
    )

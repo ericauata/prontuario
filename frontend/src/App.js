@@ -10,7 +10,7 @@ import Timeline from "./pages/patients/Timeline"
 import EventsByCategory from "./pages/patients/EventsByCategory"
 import EventDetails from "./pages/patients/EventDetails"
 import Profile from "./pages/patients/Profile"
-import CurrentDiagnosis from "./pages/patients/CurrentDiagnosis"
+import History from "./pages/patients/History"
 
 import Emergency from "./pages/emergency/Emergency"
 
@@ -27,7 +27,7 @@ export default function App() {
 
                   <Route path="/patients/:patientId" element={<Patient />}>
                      <Route path="events/timeline" element={<Timeline />} />
-                     <Route path="diagnosis" element={<CurrentDiagnosis />} />
+                     <Route path="diagnosis" element={<History />} />
                      <Route path="profile" element={<Profile />} />
                      <Route path="categories/:categoryId" element={<EventsByCategory />}>
                         <Route path="events/:eventId" element={<EventDetails />} />

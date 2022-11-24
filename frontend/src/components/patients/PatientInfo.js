@@ -10,8 +10,8 @@ export default function PatientInfo(props) {
    const { thisPatient, getAge } = useContext(Context)
 
    function diagnosisEl() {
-      if (thisPatient.currentDiagnosis?.length > 0) {
-         return thisPatient.currentDiagnosis.map(item => (
+      if (thisPatient.medicalHistory?.currentDiagnosis.length > 0) {
+         return thisPatient.medicalHistory?.currentDiagnosis.map(item => (
             item.name
          )).join(", ")
       } else {

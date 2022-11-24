@@ -20,11 +20,11 @@ export default function PatientSidebar(props) {
    const patientPath = `/patients/${thisPatient._id}`
 
    return (
-      <nav className="bg-slate-600 h-screen text-white pt-4">
+      <nav className="bg-slate-600 min-h-screen text-white pt-4">
          <ul>
             <li className="flex flex-col">
                <NavLink
-                  to={`${patientPath}/events/timeline?n=1`}
+                  to={`${patientPath}/events/timeline?n=10`}
                   className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}>
                   <UilListUl className="mr-1 text-xl" />
                   Eventos recentes
@@ -35,7 +35,7 @@ export default function PatientSidebar(props) {
                   to={`${patientPath}/diagnosis`}
                   className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}>
                   <UilFolderExclamation className="mr-1 text-xl" />
-                  Diagnósticos atuais
+                  História médica
                </NavLink>
             </li>
             <li className="flex flex-col">
@@ -46,14 +46,14 @@ export default function PatientSidebar(props) {
                   Ambulatório
                </NavLink>
             </li>
-            <li className="flex flex-col mt-4">
+            {/* <li className="flex flex-col mt-4">
                <NavLink
                   to={`${patientPath}/profile`}
                   className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}>
                   <UilUserSquare className="mr-1 text-xl" />
                   Dados pessoais
                </NavLink>
-            </li>
+            </li> */}
          </ul>
       </nav >
 

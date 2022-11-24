@@ -31,7 +31,7 @@ export default function EventsByCategory() {
                   "py-3 px-4 block border-b"
             }
             key={event._id}>
-            <div className={`text-slate-600 text-sm uppercase mb-1`}>
+            <div className={`text-slate-700 text-sm uppercase mb-1`}>
                {event.specialty}
             </div>
             <div className="flex text-sm items-center">
