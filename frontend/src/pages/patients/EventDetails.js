@@ -38,7 +38,7 @@ export default function EventDetails() {
          </div>
 
          <div className="mb-6">
-            <div className="inline-block bg-slate-600 rounded-r-full text-white py-1 pl-3 pr-5 mb-2 uppercase text-sm">
+            <div className="text-sky-700 mb-2 uppercase">
                Consulta
             </div>
             <div className="border-b py-2 px-3 bg-slate-100 whitespace-pre-line">
@@ -47,7 +47,7 @@ export default function EventDetails() {
          </div>
 
          <div className="">
-            <div className="inline-block bg-slate-600 rounded-r-full text-white py-1 pl-3 pr-5 mb-2 uppercase text-sm">
+            <div className="text-sky-700 mb-2 uppercase">
                História médica
             </div>
             <div className="flex items-baseline mb-5">

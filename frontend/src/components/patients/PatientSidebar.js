@@ -20,7 +20,7 @@ export default function PatientSidebar(props) {
    const patientPath = `/patients/${thisPatient._id}`
 
    return (
-      <nav className="bg-slate-600 min-h-screen text-white pt-4">
+      <nav className="bg-slate-600 min-h-screen h-full text-white pt-4">
          <ul>
             <li className="flex flex-col">
                <NavLink
