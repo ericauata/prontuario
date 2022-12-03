@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Link, useParams, Outlet } from "react-router-dom"
 
 import { Context } from "../../Context"
@@ -11,6 +11,7 @@ export default function Patient() {
 
    const { thisPatient, setThisPatient, isPatientUpdated } = useContext(Context)
    const { patientId } = useParams()
+   const [patientMenuOn, setPatientMenuOn] = useState(false);
 
    useEffect(() => {
       fetch(`/api/patients/${patientId}`)
@@ -21,19 +22,17 @@ export default function Patient() {
    }, [patientId, isPatientUpdated])
 
    return (
-      <div className="">
-         <Header />
-         <div className="">
-            <PatientInfo />
+      <div>
+         <div className="sticky top-0">
+            <Header />
+            <PatientInfo toggleMenu={setPatientMenuOn} />
          </div>
-         <div className="flex">
-            <div className="w-1/6">
-               <PatientSidebar />
-            </div>
-            <div className="w-full">
-               <Outlet />
-            </div>
+         {patientMenuOn &&
+            <PatientSidebar toggleMenu={setPatientMenuOn} />
+         }
+         <div className="w-full">
+            <Outlet />
          </div>
-      </div >
+      </div>
    )
 }

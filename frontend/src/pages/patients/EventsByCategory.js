@@ -52,7 +52,7 @@ export default function EventsByCategory() {
 
    return (
       <div className="flex h-full">
-         <div className="w-1/5 bg-slate-100 h-full overflow-auto">
+         <div className="w-1/2 bg-slate-100 h-full overflow-auto">
             {eventsEl}
          </div>
          <div className="w-full">

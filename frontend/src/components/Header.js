@@ -1,40 +1,36 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 
+import Logo from "../components/Logo"
 import SearchPatient from "./SearchPatient"
 import { Context } from "../Context"
 
-import { UilCell } from "@iconscout/react-unicons"
+import { UilSearch } from "@iconscout/react-unicons"
 
 export default function Header() {
 
    const { thisPatient, setThisPatient } = useContext(Context)
+   const [searchOn, setSearchOn] = useState(false)
 
    const tabStyles = "uppercase font-bold text-sm rounded-t mt-2 mr-1 text-white px-5 flex items-center"
    const tabActiveStyles = "uppercase font-bold text-sm bg-slate-700 rounded-t mt-2 mr-1 text-white px-5 flex items-center"
 
+   function searchToggle(event) {
+      event.preventDefault()
+      setSearchOn(prevState => !prevState)
+   }
+
    return (
-      <header className="">
-         <div className="bg-slate-900 flex justify-between items-center">
-            <nav className="flex self-stretch items-stretch ml-2">
-               {Object.keys(thisPatient).length !== 0 &&
-                  <NavLink to={`/patients/${thisPatient._id}`} className={({ isActive }) => isActive ? tabActiveStyles : tabStyles}>
-                     Paciente
-                  </NavLink>
-               }
-               <NavLink to="/emergency" className={({ isActive }) => isActive ? tabActiveStyles : tabStyles}>Emergência</NavLink>
-               <NavLink to="/outpatient" className={({ isActive }) => isActive ? tabActiveStyles : tabStyles}>Ambulatório</NavLink>
-            </nav>
-            <div id="logo" className="text-2xl font-serif my-1">
-               <Link to="/" className="text-white flex items-center">
-                  <UilCell className="mr-1 w-7 h-7" />
-                  PRONTUÁRIO EW
-               </Link>
-            </div>
-            <div className="mr-2 w-1/4">
-               <SearchPatient />
-            </div>
+      <div className="bg-slate-900 p-3">
+         <div className="flex justify-between items-center">
+            <Link to="/">
+               <Logo textClass="text-white text-2xl" imageClass="mr-1 w-7 h-7" />
+            </Link>
+            <a href="" onClick={searchToggle}>
+               <UilSearch className="text-white" />
+            </a>
          </div>
-      </header>
+         {searchOn && <SearchPatient id="search-patient" className="w-full mt-2" />}
+      </div>
    )
 }

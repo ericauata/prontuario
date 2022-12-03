@@ -13,19 +13,21 @@ import { UilFilePlusAlt } from "@iconscout/react-unicons"
 
 export default function PatientSidebar(props) {
 
-   const menuStyles = "py-2 px-4 flex items-center"
-   const menuActiveStyles = "flex items-center bg-slate-700 text-white py-2 px-4"
+   const menuStyles = "py-2 px-3 pr-4 flex items-center"
+   const menuActiveStyles = "flex items-center bg-slate-700 text-white py-2 px-3 pr-4"
 
    const { thisPatient } = useContext(Context)
    const patientPath = `/patients/${thisPatient._id}`
 
    return (
-      <nav className="bg-slate-600 min-h-screen h-full text-white pt-4">
+      <nav className="fixed bg-slate-600 min-h-screen h-full text-white pt-3 shadow-lg">
          <ul>
             <li className="flex flex-col">
                <NavLink
                   to={`${patientPath}/events/timeline?n=10`}
-                  className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}>
+                  className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}
+                  onClick={() => props.toggleMenu(false)}
+               >
                   <UilListUl className="mr-1 text-xl" />
                   Eventos recentes
                </NavLink>
@@ -33,7 +35,9 @@ export default function PatientSidebar(props) {
             <li className="flex flex-col">
                <NavLink
                   to={`${patientPath}/diagnosis`}
-                  className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}>
+                  className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}
+                  onClick={() => props.toggleMenu(false)}
+               >
                   <UilFolderExclamation className="mr-1 text-xl" />
                   História médica
                </NavLink>
@@ -41,19 +45,13 @@ export default function PatientSidebar(props) {
             <li className="flex flex-col">
                <NavLink
                   to={`${patientPath}/categories/636ab44fbf294dd0321dee27`}
-                  className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}>
+                  className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}
+                  onClick={() => props.toggleMenu(false)}
+               >
                   <UilStethoscope className="mr-1 text-xl" />
                   Ambulatório
                </NavLink>
             </li>
-            {/* <li className="flex flex-col mt-4">
-               <NavLink
-                  to={`${patientPath}/profile`}
-                  className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}>
-                  <UilUserSquare className="mr-1 text-xl" />
-                  Dados pessoais
-               </NavLink>
-            </li> */}
          </ul>
       </nav >
 

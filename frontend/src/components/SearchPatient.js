@@ -24,7 +24,8 @@ export default function SearchPatient(props) {
       suggestionsBoxStyles: "absolute shadow-lg w-full rounded mt-1 text-base bg-slate-800",
       itemStyles: "block text-slate-100 py-2 px-3 focus:bg-slate-200 focus:outline-none focus:text-black text-base focus:first:rounded-t focus:last:rounded-b",
       itemDetailBoxStyles: "text-sm",
-      itemDetailStyles: "font-serif uppercase text-xs ml-2 first:ml-0"
+      itemDetailStyles: "",
+      itemDetailLabelStyles: "font-serif uppercase text-xs ml-2 first:ml-0"
    }
 
    const [styles, setStyles] = useState(stylesObj)
@@ -33,10 +34,13 @@ export default function SearchPatient(props) {
       if (props.section === "home") {
          setStyles(prevStyles => ({
             ...prevStyles,
-            inputStyles: "rounded w-full border-none bg-slate-600 text-lg text-gray-200 p-3 placeholder:italic placeholder:text-slate-400 placeholder:text-lg pl-12 focus:bg-slate-900 focus:text-white focus:placeholder:text-slate-500",
-            searchIconStyles: "pointer-events-none w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-4 text-slate-400",
-            itemStyles: "block text-slate-100 py-2 px-3 text-base focus:bg-slate-200 focus:outline-none focus:text-black focus:first:rounded-t focus:last:rounded-b",
-            suggestionsBoxStyles: "absolute shadow-lg w-full rounded mt-2 text-lg bg-slate-600",
+            inputStyles: "rounded w-full border-none bg-slate-600 text-lg text-gray-200 p-3 placeholder:italic placeholder:text-slate-400 placeholder:text-lg pl-10 focus:bg-slate-900 focus:text-white focus:placeholder:text-slate-500",
+            searchIconStyles: "pointer-events-none w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-3 text-slate-400",
+            itemStyles: "block text-slate-100 py-2 px-3 text-lg focus:bg-slate-200 focus:outline-none focus:text-black focus:first:rounded-t focus:last:rounded-b",
+            itemDetailBoxStyles: "flex flex-col",
+            itemDetailStyles: "text-base",
+            itemDetailLabelStyles: "font-serif uppercase text-sm ml-2 first:ml-0",
+            suggestionsBoxStyles: "absolute shadow-lg w-full rounded mt-2 bg-slate-600",
          }))
       }
    }, [props.section])
@@ -106,29 +110,10 @@ export default function SearchPatient(props) {
          .then(data => setSuggestions(data))
    }
 
-   const suggestionsEl = suggestions.map(item => {
-      return (
-         <Link
-            to={`/patients/${item._id}`}
-            key={item._id}
-            className={styles.itemStyles}
-            onMouseEnter={handleMouseOver}
-            onMouseLeave={handleMouseOut}
-            onClick={startOver}
-         >
-            <div>
-               {item.fullName}
-            </div>
-            <div className={styles.itemDetailBoxStyles}>
-               <span className={styles.itemDetailStyles}>Data de Nasc.:</span> {formatDate(item.dateOfBirth, "shorter")}
-               <span className={styles.itemDetailStyles}>Registro:</span> {item._id}
-            </div>
-         </Link>
-      )
-   })
+   // const suggestionsEl = 
 
    return (
-      <div className="relative">
+      <div className={`relative ${props.className}`}>
          <label className={styles.labelStyles}>
             <UilSearch className={styles.searchIconStyles} />
             <input
@@ -156,7 +141,30 @@ export default function SearchPatient(props) {
                className={styles.suggestionsBoxStyles}
                onClick={(event) => event.stopPropagation()}
             >
-               {suggestionsEl}
+               {suggestions.map(item => {
+                  return (
+                     <Link
+                        to={`/patients/${item._id}`}
+                        key={item._id}
+                        className={styles.itemStyles}
+                        onMouseEnter={handleMouseOver}
+                        onMouseLeave={handleMouseOut}
+                        onClick={startOver}
+                     >
+                        <div>
+                           {item.fullName}
+                        </div>
+                        <div className={styles.itemDetailBoxStyles}>
+                           <div className={styles.itemDetailStyles}>
+                              <span className={styles.itemDetailLabelStyles}>Data de Nascimento:</span> {formatDate(item.dateOfBirth, "shorter")}
+                           </div>
+                           <div className={styles.itemDetailStyles}>
+                              <span className={styles.itemDetailLabelStyles}>ID:</span> {item._id}
+                           </div>
+                        </div>
+                     </Link>
+                  )
+               })}
             </div>
          }
       </div>
