@@ -27,9 +27,7 @@ export default function Patient() {
             <Header />
             <PatientInfo toggleMenu={setPatientMenuOn} />
          </div>
-         {patientMenuOn &&
-            <PatientSidebar toggleMenu={setPatientMenuOn} />
-         }
+         <PatientSidebar toggleMenu={setPatientMenuOn} statusMenu={patientMenuOn} />
          <div className="w-full">
             <Outlet />
          </div>
