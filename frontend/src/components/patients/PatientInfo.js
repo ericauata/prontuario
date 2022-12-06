@@ -16,7 +16,7 @@ export default function PatientInfo(props) {
 
    return (
       <div className="bg-slate-700 text-white">
-         <div id="patient-info" className="p-2">
+         <div id="patient-info" className="px-3 py-2">
             <div className="flex items-center">
                <a
                   href=""

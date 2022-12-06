@@ -17,8 +17,9 @@ export default function PatientSidebar(props) {
    const currDiag = thisPatient.medicalHistory?.currentDiagnosis
 
    return (
-      <nav className={`fixed bg-slate-600 min-h-screen h-full text-white shadow-lg max-w-1/2 ${props.statusMenu ? "block" : "hidden"} lg:block lg:static lg:w-64 pt-2`}>
-
+      <nav
+         className={`fixed z-50 bg-slate-600 min-h-screen h-full text-white shadow-lg max-w-1/2  ease-in-out duration-300 ${props.statusMenu ? "translate-x-0" : "-translate-x-full"} lg:block lg:static lg:w-64 lg:translate-x-0 pt-2`}
+      >
          <div className="md:flex-row text-sm m-2 mt-0 p-3 rounded bg-slate-700 shadow-inner">
             <div className="mr-3">
                <span className="text-slate-300 font-serif">Registro: </span>
@@ -40,7 +41,6 @@ export default function PatientSidebar(props) {
                </span>
             </div>
          </div>
-
          <ul>
             <li className="flex flex-col">
                <NavLink
@@ -73,7 +73,6 @@ export default function PatientSidebar(props) {
                </NavLink>
             </li>
          </ul>
-      </nav >
-
+      </nav>
    )
 }

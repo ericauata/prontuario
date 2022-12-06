@@ -27,8 +27,9 @@ export default function Patient() {
             <Header />
             <PatientInfo toggleMenu={setPatientMenuOn} />
          </div>
-         <PatientSidebar toggleMenu={setPatientMenuOn} statusMenu={patientMenuOn} />
-         <div className="w-full">
+         <div>
+            <div className={`${patientMenuOn ? "block" : "hidden"} fixed w-screen h-screen opacity-80 bg-black z-10`}></div>
+            <PatientSidebar toggleMenu={setPatientMenuOn} statusMenu={patientMenuOn} />
             <Outlet />
          </div>
       </div>

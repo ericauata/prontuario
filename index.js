@@ -49,7 +49,12 @@ app.get("/api/patients/:patientId", async (req, res) => {
 app.get("/api/patients/:patientId/events", async (req, res) => {
    const patientId = req.params.patientId
    const limit = req.query.n
-   const events = await Event.find({ patient: patientId }).limit(limit)
+   const events = await Event.find({ patient: patientId })
+      .limit(limit)
+      .populate({
+         path: "category",
+         model: "Category"
+      })
    res.send(events)
 })
 

@@ -20,40 +20,37 @@ export default function EventsByCategory() {
 
    // console.log(thisPatient)
 
-   const eventsEl = events.map(event => {
-
-      return (
-         <NavLink
-            to={`events/${event._id}`}
-            className={
-               ({ isActive }) => isActive ?
-                  "py-3 px-4 block border-b bg-white" :
-                  "py-3 px-4 block border-b"
-            }
-            key={event._id}>
-            <div className={`text-slate-700 text-sm uppercase mb-1`}>
-               {event.specialty}
-            </div>
-            <div className="flex text-sm items-center">
-               <UilCalender className="text-slate-400 w-4 h-4 mr-1" />
-               <span>{formatDate(event.updatedAt, "short")}</span>
-            </div>
-            <div className="flex text-sm items-center">
-               <UilUser className="text-slate-400 w-4 h-4 mr-1" />
-               <span>{event.doctor}</span>
-            </div>
-            <div className="flex text-sm items-center">
-               <UilFolderExclamation className="text-slate-400 w-4 h-4 mr-1" />
-               <span>{event.diagnosis.join(", ")}</span>
-            </div>
-         </NavLink>
-      )
-   })
-
    return (
-      <div className="flex h-full">
+      <div className="">
          <div className="w-1/2 bg-slate-100 h-full overflow-auto">
-            {eventsEl}
+            {events.map(event => {
+               return (
+                  <NavLink
+                     to={`events/${event._id}`}
+                     className={
+                        ({ isActive }) => isActive ?
+                           "py-3 px-4 block border-b bg-white" :
+                           "py-3 px-4 block border-b"
+                     }
+                     key={event._id}>
+                     <div className={`text-slate-700 text-sm uppercase mb-1`}>
+                        {event.specialty}
+                     </div>
+                     <div className="flex text-sm items-center">
+                        <UilCalender className="text-slate-400 w-4 h-4 mr-1" />
+                        <span>{formatDate(event.updatedAt, "short")}</span>
+                     </div>
+                     <div className="flex text-sm items-center">
+                        <UilUser className="text-slate-400 w-4 h-4 mr-1" />
+                        <span>{event.doctor}</span>
+                     </div>
+                     <div className="flex text-sm items-center">
+                        <UilFolderExclamation className="text-slate-400 w-4 h-4 mr-1" />
+                        <span>{event.diagnosis.join(", ")}</span>
+                     </div>
+                  </NavLink>
+               )
+            })}
          </div>
          <div className="w-full">
             <Outlet context={[events]} />

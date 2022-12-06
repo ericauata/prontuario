@@ -7,7 +7,7 @@ import { Context } from "../Context"
 
 import { UilSearch } from "@iconscout/react-unicons"
 
-export default function Header() {
+export default function Header(props) {
 
    const { thisPatient, setThisPatient } = useContext(Context)
    const [searchOn, setSearchOn] = useState(false)
@@ -34,7 +34,7 @@ export default function Header() {
                <UilSearch className="text-white" />
             </a>
          </div>
-         <SearchPatient id="search-patient" className={`w-full mt-2 ${!searchOn && "hidden"} md:block md:w-1/2 md:mt-0`} />
+         <SearchPatient id="search-patient" className={`w-full mt-2 ${searchOn ? "block" : "hidden"} md:block md:w-1/2 md:mt-0 lg:w-1/3`} />
       </div>
    )
 }
