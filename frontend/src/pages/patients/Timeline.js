@@ -1,6 +1,8 @@
 import React, { useEffect, useContext, useState } from "react"
-import { Link, useSearchParams, useParams } from "react-router-dom"
+import { NavLink, useSearchParams, useParams } from "react-router-dom"
 import { Context } from "../../Context"
+
+import { UilCalender, UilUser, UilFolderExclamation, UilFileSearchAlt, UilAngleDoubleLeft, UilAngleDoubleRight } from "@iconscout/react-unicons"
 
 export default function Timeline(props) {
 
@@ -9,6 +11,9 @@ export default function Timeline(props) {
 
    const [timeline, setTimeline] = useState([])
    const [searchParams, setSearchParams] = useSearchParams()
+
+   const menuStyles = "block mb-2 border rounded bg-slate-100 p-2 hover:bg-slate-200 hover:border-slate-400"
+   const menuActiveStyles = menuStyles + " " + "bg-slate-200 border-slate-400"
 
    const numOfEvents = searchParams.get("n")
 
@@ -31,38 +36,51 @@ export default function Timeline(props) {
          </p>
          {timeline?.map(event => {
             return (
-               <Link
-                  to="outpatient"
+               <NavLink
+                  to={`/patients/${event.patient}/categories/${event.category._id}/events/${event._id}`}
                   key={event._id}
-                  className="block mb-2 border rounded bg-slate-100 p-2 hover:bg-slate-200 hover:border-slate-400"
+                  className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}
                >
-                  <div className="flex justify-between items-baseline">
-                     <div className="grow font-bold text-slate-600 mb-1">
-                        {event.category.name} de {event.specialty}
-                     </div>
-                     <div className="text-sm text-slate-600">
-                        {formatDate(event.createdAt, "shorter")}
-                     </div>
+                  <div className="font-bold text-slate-600 mb-1">
+                     {event.category.name} de {event.specialty}
                   </div>
-                  <div className="text-sm">
-                     {event.exam.length > 0 &&
-                        <div>
-                           <span className="text-gray-500 font-bold uppercase text-xs mr-1">
-                              Exame:
-                           </span>
-                           {event.exam.join(", ")}
-                        </div>}
-                     {event.diagnosis.length > 0 &&
-                        <div>
-                           <span className="text-gray-500 font-bold uppercase text-xs mr-1">
-                              HD:
-                           </span>
-                           {event.diagnosis.join(", ")}
-                        </div>}
+                  <div className="flex text-sm items-center" title="Data do atendimento">
+                     <UilCalender className="text-slate-400 w-4 h-4 mr-1" />
+                     <span>{formatDate(event.createdAt, "short")}</span>
                   </div>
-               </Link>
+                  <div className="flex text-sm items-center" title="Médico responsável pelo atendimento">
+                     <UilUser className="text-slate-400 w-4 h-4 mr-1" />
+                     <span>{event.doctor}</span>
+                  </div>
+                  {event.exam.length > 0 &&
+                     <div className="flex text-sm items-center" title="Exame realizado">
+                        <UilFileSearchAlt className="text-slate-400 w-4 h-4 mr-1" />
+                        <span>{event.exam.join(", ")}</span>
+                     </div>
+                  }
+                  {event.diagnosis.length > 0 && event.exam.length === 0 &&
+                     <div className="flex text-sm items-center" title="Hipótese diagnóstica">
+                        <UilFolderExclamation className="text-slate-400 w-4 h-4 mr-1" />
+                        <span>{event.diagnosis.join(", ")}</span>
+                     </div>
+                  }
+               </NavLink>
             )
          })}
       </div >
    )
 }
+
+{/* <div className="flex text-sm items-center">
+      <UilCalender className="text-slate-400 w-4 h-4 mr-1" />
+      <span>{formatDate(event.updatedAt, "short")}</span>
+   </div>
+   <div className="flex text-sm items-center">
+      <UilUser className="text-slate-400 w-4 h-4 mr-1" />
+      <span>{event.doctor}</span>
+   </div>
+   <div className="flex text-sm items-center">
+      <UilFolderExclamation className="text-slate-400 w-4 h-4 mr-1" />
+      <span>{event.diagnosis.join(", ")}</span>
+   </div> 
+*/}

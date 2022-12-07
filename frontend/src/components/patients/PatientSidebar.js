@@ -69,7 +69,7 @@ export default function PatientSidebar(props) {
                   onClick={() => props.toggleMenu(false)}
                >
                   <UilStethoscope className="mr-1 text-xl" />
-                  Ambulatório
+                  Consultas
                </NavLink>
             </li>
          </ul>

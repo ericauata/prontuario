@@ -8,7 +8,24 @@ const eventSchema = new Schema(
       diagnosis: [],
       exam: [],
       doctor: String,
-      body: String
+      body: String,
+      medicalHistory: {
+         height: Number,
+         weight: Number,
+         alergies: String,
+         medications: String,
+         currentDiagnosis: [{
+            _id: Schema.Types.ObjectId,
+            name: String,
+            body: String
+         }],
+         previousDiagnosis: String,
+         recreationalDrugs: String,
+         smoking: String,
+         alcohol: String,
+         physicalActivity: String,
+         familyHistory: String
+      }
    },
    {
       timestamps: true

@@ -9,16 +9,7 @@ export default function EventDetails() {
 
    const { thisPatient, formatDate, events, setEvents } = useContext(Context)
    console.log(thisPatient)
-
-   // const [events] = useOutletContext()
    const { eventId } = useParams()
-   // const [thisEvent, setThisEvent] = useState({})
-
-   // useEffect(() => {
-   //    const event = events.find(item => item._id === eventId)
-   //    setThisEvent(event)
-   // }, [events])
-
    const thisEvent = events.find(item => item._id === eventId)
 
    return (
