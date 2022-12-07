@@ -18,7 +18,7 @@ export default function Timeline(props) {
    const numOfEvents = searchParams.get("n")
 
    useEffect(() => {
-      fetch(`/api/patients/${patientId}/events?n=${numOfEvents}`)
+      fetch(`/api/patients/${patientId}/events?n=10`)
          .then(res => res.json())
          .then(data => setTimeline(data))
          .catch(err => {
@@ -27,12 +27,12 @@ export default function Timeline(props) {
    }, [])
 
    return (
-      <div className="p-4 max-w-screen-lg">
+      <div className="p-4 lg:grow max-w-screen-lg">
          <h2 className="uppercase font-serif text-lg mb-1">
             Eventos recentes
          </h2>
          <p className="mb-3">
-            Mostrando últimos {numOfEvents} eventos.
+            Mostrando últimos 10 eventos.
          </p>
          {timeline?.map(event => {
             return (
@@ -70,17 +70,3 @@ export default function Timeline(props) {
       </div >
    )
 }
-
-{/* <div className="flex text-sm items-center">
-      <UilCalender className="text-slate-400 w-4 h-4 mr-1" />
-      <span>{formatDate(event.updatedAt, "short")}</span>
-   </div>
-   <div className="flex text-sm items-center">
-      <UilUser className="text-slate-400 w-4 h-4 mr-1" />
-      <span>{event.doctor}</span>
-   </div>
-   <div className="flex text-sm items-center">
-      <UilFolderExclamation className="text-slate-400 w-4 h-4 mr-1" />
-      <span>{event.diagnosis.join(", ")}</span>
-   </div> 
-*/}

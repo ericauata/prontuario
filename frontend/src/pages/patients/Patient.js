@@ -23,11 +23,11 @@ export default function Patient() {
 
    return (
       <div>
-         <div className="sticky top-0">
+         <div className="sticky lg:static top-0 z-30">
             <Header />
             <PatientInfo toggleMenu={setPatientMenuOn} />
          </div>
-         <div>
+         <div className="lg:flex lg:items-stretch">
             <div className={`${patientMenuOn ? "block" : "hidden"} fixed w-screen h-screen opacity-80 bg-black z-10`}></div>
             <PatientSidebar toggleMenu={setPatientMenuOn} statusMenu={patientMenuOn} />
             <Outlet />

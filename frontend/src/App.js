@@ -26,7 +26,7 @@ export default function App() {
                   <Route path="/patients/new" element={<NewPatient />} />
 
                   <Route path="/patients/:patientId" element={<Patient />}>
-                     <Route path="events/timeline" element={<Timeline />} />
+                     <Route index element={<Timeline />} />
                      <Route path="diagnosis" element={<History />} />
                      <Route path="profile" element={<Profile />} />
                      <Route path="categories/:categoryId" element={<EventsByCategory />}>

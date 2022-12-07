@@ -18,7 +18,7 @@ export default function PatientSidebar(props) {
 
    return (
       <nav
-         className={`fixed z-50 bg-slate-600 min-h-screen h-full text-white shadow-lg max-w-1/2  ease-in-out duration-300 ${props.statusMenu ? "translate-x-0" : "-translate-x-full"} lg:block lg:static lg:w-64 lg:translate-x-0 pt-2`}
+         className={`fixed z-50 bg-slate-600 min-h-screen text-white shadow-lg max-w-1/2  ease-in-out duration-300 ${props.statusMenu ? "translate-x-0" : "-translate-x-full"} lg:block lg:static lg:w-64 lg:translate-x-0 pt-2`}
       >
          <div className="md:flex-row text-sm m-2 mt-0 p-3 rounded bg-slate-700 shadow-inner">
             <div className="mr-3">
@@ -44,7 +44,8 @@ export default function PatientSidebar(props) {
          <ul>
             <li className="flex flex-col">
                <NavLink
-                  to={`${patientPath}/events/timeline?n=10`}
+                  to={`${patientPath}`}
+                  end
                   className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}
                   onClick={() => props.toggleMenu(false)}
                >

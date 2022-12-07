@@ -26,8 +26,8 @@ export default function EventsByCategory() {
    }
 
    return (
-      <div className="">
-         <div className={`flex fixed w-[20rem] shadow-lg min-h-screen p-3 bg-slate-500 ${listOn ? "translate-x-0" : "-translate-x-[18rem]"} ease-in-out duration-300`}>
+      <div className="relative">
+         <div className={`flex absolute z-10 w-[20rem] w-64 shadow-lg min-h-screen h-full p-3 bg-slate-500 ${listOn ? "translate-x-0" : "-translate-x-56"} ease-in-out duration-300`}>
             <div className="grow">
                <h2 className="uppercase font-serif text-lg mb-1 text-white">
                   Consultas
