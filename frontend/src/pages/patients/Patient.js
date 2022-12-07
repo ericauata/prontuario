@@ -21,6 +21,14 @@ export default function Patient() {
          })
    }, [patientId, isPatientUpdated])
 
+   useEffect(() => {
+      if (patientMenuOn) {
+         document.body.addEventListener("click", () => { setPatientMenuOn(false) })
+      }
+   }, [patientMenuOn])
+
+   console.log(patientMenuOn)
+
    return (
       <div>
          <div className="sticky lg:static top-0 z-30">

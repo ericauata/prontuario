@@ -11,6 +11,7 @@ export default function PatientInfo(props) {
 
    function togglePatientMenu(event) {
       event.preventDefault()
+      event.stopPropagation()
       props.toggleMenu(prevState => !prevState)
    }
 
