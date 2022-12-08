@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from "react"
-import { Link, useParams, Outlet } from "react-router-dom"
+import { useParams, Outlet } from "react-router-dom"
 
 import { Context } from "../../Context"
-
 import Header from "../../components/Header"
 import PatientSidebar from "../../components/patients/PatientSidebar"
 import PatientInfo from "../../components/patients/PatientInfo"
 
 export default function Patient() {
 
-   const { thisPatient, setThisPatient, isPatientUpdated } = useContext(Context)
+   const { setThisPatient, isPatientUpdated } = useContext(Context)
    const { patientId } = useParams()
    const [patientMenuOn, setPatientMenuOn] = useState(false);
 
@@ -27,8 +26,6 @@ export default function Patient() {
       }
    }, [patientMenuOn])
 
-   console.log(patientMenuOn)
-
    return (
       <div>
          <div className="sticky lg:static top-0 z-30">
@@ -37,7 +34,10 @@ export default function Patient() {
          </div>
          <div className="lg:flex lg:items-stretch">
             <div className={`${patientMenuOn ? "block" : "hidden"} fixed w-screen h-screen opacity-80 bg-black z-10`}></div>
-            <PatientSidebar toggleMenu={setPatientMenuOn} statusMenu={patientMenuOn} />
+            <PatientSidebar
+               toggleMenu={setPatientMenuOn}
+               statusMenu={patientMenuOn}
+            />
             <Outlet />
          </div>
       </div>

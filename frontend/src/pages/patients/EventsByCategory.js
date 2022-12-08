@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react"
-import { useParams, useOutletContext, NavLink, Outlet } from "react-router-dom"
+import { useParams, NavLink, Outlet } from "react-router-dom"
 import { Context } from "../../Context"
 
 import { UilCalender, UilUser, UilFolderExclamation, UilAngleDoubleLeft, UilAngleDoubleRight } from "@iconscout/react-unicons"
@@ -10,8 +10,8 @@ export default function EventsByCategory() {
    const { formatDate, events, setEvents } = useContext(Context)
    const { patientId, categoryId, eventId } = useParams()
 
-   const menuStyles = "block mb-2 rounded border bg-slate-100 p-2 hover:bg-slate-200 hover:border-slate-800"
-   const menuActiveStyles = menuStyles + " " + "bg-slate-200 border-slate-600"
+   const menuStyles = "block mb-2 rounded border bg-slate-100 p-2 hover:bg-slate-200"
+   const menuActiveStyles = `${menuStyles} bg-slate-200`
 
    useEffect(() => {
       eventId ? setListOn(false) : setListOn(true)
@@ -27,10 +27,10 @@ export default function EventsByCategory() {
 
    return (
       <div className="relative w-full">
-         <div className={`flex absolute z-10 w-64 shadow-lg min-h-screen h-full p-3 bg-slate-500 ${listOn ? "translate-x-0" : "-translate-x-56"} ease-in-out duration-300`}>
+         <div className={`flex absolute z-10 w-64 shadow-lg min-h-screen h-full p-3 bg-slate-500 ease-in-out duration-300 ${listOn ? "translate-x-0" : "-translate-x-56"}`}>
             <div className="grow">
                <h2 className="uppercase font-serif text-lg mb-1 text-white">
-                  {events[0]?.category.name + "s"}
+                  {events[0]?.category.name}
                </h2>
                {events.map(event => {
                   return (

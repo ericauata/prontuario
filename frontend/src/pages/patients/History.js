@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useOutletContext } from "react-router-dom"
+import React, { useContext } from "react"
 import { Context } from "../../Context"
 
 export default function History() {
@@ -10,12 +9,12 @@ export default function History() {
    return (
       <div className="p-4 max-w-screen-lg">
          <h2 className="uppercase font-serif text-lg mb-1">
-            História médica
+            Medical history
          </h2>
          <div className="flex items-baseline mb-5">
             <div className="mr-5">
                <div className="mr-2 text-slate-600 font-bold">
-                  Altura
+                  Height
                </div>
                <div className="border-b py-2 px-3 bg-slate-100">
                   {history.height} cm
@@ -23,7 +22,7 @@ export default function History() {
             </div>
             <div className="mr-5">
                <div className="mr-2 text-slate-600 font-bold">
-                  Peso
+                  Weight
                </div>
                <div className="border-b py-2 px-3 bg-slate-100">
                   {history.weight} Kg
@@ -31,28 +30,25 @@ export default function History() {
             </div>
             <div className="grow">
                <div className="mr-2 text-slate-600 font-bold">
-                  Alergias
+                  Allergies
                </div>
                <div className="border-b py-2 px-3 bg-slate-100">
                   {history.alergies}
                </div>
             </div>
          </div>
-
          <div className="mb-5">
             <div className="mr-2 text-slate-600 font-bold">
-               Medicamentos em uso
+               Medication
             </div>
             <div className="border-b py-2 px-3 bg-slate-100 whitespace-pre-line">
                {history.medications}
             </div>
          </div>
-
          <div className="mb-5">
             <div className="mr-2 text-slate-600 font-bold">
-               Diagnósticos atuais
+               Current diagnostics
             </div>
-
             {history.currentDiagnosis?.map(item => (
                <div key={item._id}>
                   <div className="border-b py-2 px-3 mb-2 bg-slate-100">
@@ -64,61 +60,54 @@ export default function History() {
                </div>
             ))}
          </div>
-
          <div className="mb-5">
             <div className="mr-2 text-slate-600 font-bold">
-               Antecedentes pessoais
+               Personal history
             </div>
             <div className="border-b py-2 px-3 bg-slate-100">
                {history.previousDiagnosis}
             </div>
          </div>
-
          <div className="mb-5">
             <div className="mr-2 text-slate-600 font-bold">
-               História familiar
+               Family history
             </div>
             <div className="border-b py-2 px-3 bg-slate-100 whitespace-pre-line">
                {history.familyHistory}
             </div>
          </div>
-
          <div className="mb-5">
             <div className="mr-2 text-slate-600 font-bold">
-               Uso de drogas recreativas
+               Drug use
             </div>
             <div className="border-b py-2 px-3 bg-slate-100">
                {history.recreationalDrugs}
             </div>
          </div>
-
          <div className="mb-5">
             <div className="mr-2 text-slate-600 font-bold">
-               Tabagismo
+               Smoking
             </div>
             <div className="border-b py-2 px-3 bg-slate-100">
                {history.smoking}
             </div>
          </div>
-
          <div className="mb-5">
             <div className="mr-2 text-slate-600 font-bold">
-               Etilismo
+               Alcohol use
             </div>
             <div className="border-b py-2 px-3 bg-slate-100">
                {history.alcohol}
             </div>
          </div>
-
          <div className="mb-5">
             <div className="mr-2 text-slate-600 font-bold">
-               Atividade física
+               Physical activity
             </div>
             <div className="border-b py-2 px-3 bg-slate-100">
                {history.physicalActivity}
             </div>
          </div>
-
       </div >
    )
 }

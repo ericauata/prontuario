@@ -2,37 +2,31 @@ import React, { useEffect, useContext, useState } from "react"
 import { NavLink, useSearchParams, useParams } from "react-router-dom"
 import { Context } from "../../Context"
 
-import { UilCalender, UilUser, UilFolderExclamation, UilFileSearchAlt, UilAngleDoubleLeft, UilAngleDoubleRight } from "@iconscout/react-unicons"
+import { UilCalender, UilUser, UilFolderExclamation, UilFileSearchAlt } from "@iconscout/react-unicons"
 
-export default function Timeline(props) {
+export default function Timeline() {
 
-   const { formatDate, thisPatient } = useContext(Context)
+   const { formatDate } = useContext(Context)
    const { patientId } = useParams()
 
    const [timeline, setTimeline] = useState([])
-   const [searchParams, setSearchParams] = useSearchParams()
 
    const menuStyles = "block mb-2 border rounded bg-slate-100 p-2 hover:bg-slate-200 hover:border-slate-400"
-   const menuActiveStyles = menuStyles + " " + "bg-slate-200 border-slate-400"
-
-   const numOfEvents = searchParams.get("n")
+   const menuActiveStyles = `${menuStyles} bg-slate-200 border-slate-400`
 
    useEffect(() => {
       fetch(`/api/patients/${patientId}/events?n=10`)
          .then(res => res.json())
          .then(data => setTimeline(data))
-         .catch(err => {
-            console.log(err)
-         })
-   }, [])
+   }, [patientId])
 
    return (
       <div className="p-4 lg:grow max-w-screen-lg">
          <h2 className="uppercase font-serif text-lg mb-1">
-            Eventos recentes
+            Recent events
          </h2>
          <p className="mb-3">
-            Mostrando últimos 10 eventos.
+            Showing last 10 events.
          </p>
          {timeline?.map(event => {
             return (

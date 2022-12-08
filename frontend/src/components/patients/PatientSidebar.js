@@ -1,6 +1,5 @@
-import React, { useState, useContext } from "react"
-import { NavLink, useParams } from "react-router-dom"
-
+import React, { useContext } from "react"
+import { NavLink } from "react-router-dom"
 import { Context } from "../../Context"
 
 import { UilListUl, UilFolderExclamation, UilStethoscope, UilHeartbeat, UilFileSearchAlt } from "@iconscout/react-unicons"
@@ -8,7 +7,7 @@ import { UilListUl, UilFolderExclamation, UilStethoscope, UilHeartbeat, UilFileS
 export default function PatientSidebar(props) {
 
    const menuStyles = "py-2 px-3 pr-4 flex items-center"
-   const menuActiveStyles = "flex items-center bg-slate-700 text-white py-2 px-3 pr-4"
+   const menuActiveStyles = `${menuStyles} bg-slate-700 text-white`
 
    const { thisPatient, getAge } = useContext(Context)
    const patientPath = `/patients/${thisPatient._id}`
@@ -16,25 +15,25 @@ export default function PatientSidebar(props) {
 
    return (
       <nav
-         className={`fixed z-50 bg-slate-600 min-h-screen text-white shadow-lg max-w-1/2  ease-in-out duration-300 ${props.statusMenu ? "translate-x-0" : "-translate-x-full"} lg:block lg:static lg:w-64 lg:translate-x-0 pt-2`}
+         className={`fixed z-50 bg-slate-600 min-h-screen text-white shadow-lg max-w-1/2  ease-in-out duration-300 lg:block lg:static lg:w-64 lg:translate-x-0 pt-2 ${props.statusMenu ? "translate-x-0" : "-translate-x-full"}`}
       >
          <div className="md:flex-row text-sm m-2 mt-0 p-3 rounded bg-slate-700 shadow-inner">
             <div className="mr-3">
-               <span className="text-slate-300 font-serif">Registro: </span>
+               <span className="text-slate-300 font-serif">ID: </span>
                <span className="">{thisPatient._id}</span>
             </div>
             <div className="mr-3">
-               <span className="text-slate-300 font-serif">Idade: </span>
+               <span className="text-slate-300 font-serif">Age: </span>
                <span className="">{getAge(thisPatient.dateOfBirth)}</span>
             </div>
             <div className="">
-               <span className="text-slate-300 font-serif">Diagnósticos: </span>
+               <span className="text-slate-300 font-serif">Diagnostics: </span>
                <span className="">
                   {currDiag?.length > 0 ?
                      currDiag?.map(item => (
                         item.name
                      )).join(", ") :
-                     "nenhum"
+                     "none"
                   }
                </span>
             </div>
@@ -48,7 +47,7 @@ export default function PatientSidebar(props) {
                   onClick={() => props.toggleMenu(false)}
                >
                   <UilListUl className="mr-1 text-xl" />
-                  Eventos recentes
+                  Recent events
                </NavLink>
             </li>
             <li className="flex flex-col">
@@ -58,7 +57,7 @@ export default function PatientSidebar(props) {
                   onClick={() => props.toggleMenu(false)}
                >
                   <UilFolderExclamation className="mr-1 text-xl" />
-                  História médica
+                  Medical history
                </NavLink>
             </li>
             <li className="flex flex-col">
@@ -68,7 +67,7 @@ export default function PatientSidebar(props) {
                   onClick={() => props.toggleMenu(false)}
                >
                   <UilStethoscope className="mr-1 text-xl" />
-                  Consultas
+                  Outpatient
                </NavLink>
             </li>
             <li className="flex flex-col">
@@ -78,7 +77,7 @@ export default function PatientSidebar(props) {
                   onClick={() => props.toggleMenu(false)}
                >
                   <UilHeartbeat className="mr-1 text-xl" />
-                  Emergências
+                  Emergency
                </NavLink>
             </li>
             <li className="flex flex-col">
@@ -88,7 +87,7 @@ export default function PatientSidebar(props) {
                   onClick={() => props.toggleMenu(false)}
                >
                   <UilFileSearchAlt className="mr-1 text-xl" />
-                  Exames
+                  Tests
                </NavLink>
             </li>
          </ul>

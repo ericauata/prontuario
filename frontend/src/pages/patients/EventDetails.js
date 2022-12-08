@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useContext } from "react"
-import { useParams, useOutletContext } from "react-router-dom"
+import React, { useContext } from "react"
+import { useParams } from "react-router-dom"
 import { Context } from "../../Context"
 
-import { UilCalender } from "@iconscout/react-unicons"
-import { UilUser } from "@iconscout/react-unicons"
+import { UilCalender, UilUser } from "@iconscout/react-unicons"
 
 export default function EventDetails() {
 
-   const { thisPatient, formatDate, events, setEvents } = useContext(Context)
-   console.log(thisPatient)
+   const { formatDate, events } = useContext(Context)
    const { eventId } = useParams()
    const thisEvent = events.find(item => item._id === eventId)
 
@@ -31,8 +29,8 @@ export default function EventDetails() {
          <div className="mb-6">
             <div className="text-sky-700 mb-2 uppercase">
                {thisEvent?.category.name === "Exame" ?
-                  "Laudo" :
-                  "Consulta"
+                  "Results" :
+                  "Consultation"
                }
             </div>
             <div className="border-b py-2 px-3 bg-slate-100 whitespace-pre-line">
@@ -43,50 +41,50 @@ export default function EventDetails() {
          {thisEvent?.category.name !== "Exame" &&
             <div className="">
                <div className="text-sky-700 mb-2 uppercase">
-                  História médica
+                  Medical history
                </div>
                <div className="flex items-baseline mb-5">
                   <div className="mr-5">
                      <div className="mr-2 text-slate-600">
-                        Altura
+                        Height
                      </div>
                      <div className="border-b py-2 px-3 bg-slate-100">
-                        {thisEvent && thisEvent.medicalHistory.height} cm
+                        {thisEvent?.medicalHistory.height} cm
                      </div>
                   </div>
                   <div className="mr-5">
                      <div className="mr-2 text-slate-600">
-                        Peso
+                        Weight
                      </div>
                      <div className="border-b py-2 px-3 bg-slate-100">
-                        {thisEvent && thisEvent.medicalHistory.weight} Kg
+                        {thisEvent?.medicalHistory.weight} Kg
                      </div>
                   </div>
                   <div className="grow">
                      <div className="mr-2 text-slate-600">
-                        Alergias
+                        Allergies
                      </div>
                      <div className="border-b py-2 px-3 bg-slate-100">
-                        {thisEvent && thisEvent.medicalHistory.alergies}
+                        {thisEvent?.medicalHistory.alergies}
                      </div>
                   </div>
                </div>
 
                <div className="mb-5">
                   <div className="mr-2 text-slate-600">
-                     Medicamentos em uso
+                     Medication
                   </div>
                   <div className="border-b py-2 px-3 bg-slate-100 whitespace-pre-line">
-                     {thisEvent && thisEvent.medicalHistory.medications}
+                     {thisEvent?.medicalHistory.medications}
                   </div>
                </div>
 
                <div className="mb-5">
                   <div className="mr-2 text-slate-600">
-                     Diagnósticos atuais
+                     Current diagnostics
                   </div>
 
-                  {thisEvent && thisEvent.medicalHistory.currentDiagnosis?.map(item => (
+                  {thisEvent?.medicalHistory.currentDiagnosis?.map(item => (
                      <div key={item._id}>
                         <div className="border-b py-2 px-3 mb-2 bg-slate-100">
                            {item.name}
@@ -100,55 +98,55 @@ export default function EventDetails() {
 
                <div className="mb-5">
                   <div className="mr-2 text-slate-600">
-                     Antecedentes pessoais
+                     Personal history
                   </div>
                   <div className="border-b py-2 px-3 bg-slate-100">
-                     {thisEvent && thisEvent.medicalHistory.previousDiagnosis}
+                     {thisEvent?.medicalHistory.previousDiagnosis}
                   </div>
                </div>
 
                <div className="mb-5">
                   <div className="mr-2 text-slate-600">
-                     História familiar
+                     Family history
                   </div>
                   <div className="border-b py-2 px-3 bg-slate-100 whitespace-pre-line">
-                     {thisEvent && thisEvent.medicalHistory.familyHistory}
+                     {thisEvent?.medicalHistory.familyHistory}
                   </div>
                </div>
 
                <div className="mb-5">
                   <div className="mr-2 text-slate-600">
-                     Uso de drogas recreativas
+                     Drug use
                   </div>
                   <div className="border-b py-2 px-3 bg-slate-100">
-                     {thisEvent && thisEvent.medicalHistory.recreationalDrugs}
+                     {thisEvent?.medicalHistory.recreationalDrugs}
                   </div>
                </div>
 
                <div className="mb-5">
                   <div className="mr-2 text-slate-600">
-                     Tabagismo
+                     Smoking
                   </div>
                   <div className="border-b py-2 px-3 bg-slate-100">
-                     {thisEvent && thisEvent.medicalHistory.smoking}
+                     {thisEvent?.medicalHistory.smoking}
                   </div>
                </div>
 
                <div className="mb-5">
                   <div className="mr-2 text-slate-600">
-                     Etilismo
+                     Alcohol use
                   </div>
                   <div className="border-b py-2 px-3 bg-slate-100">
-                     {thisEvent && thisEvent.medicalHistory.alcohol}
+                     {thisEvent?.medicalHistory.alcohol}
                   </div>
                </div>
 
                <div className="mb-5">
                   <div className="mr-2 text-slate-600">
-                     Atividade física
+                     Physical activity
                   </div>
                   <div className="border-b py-2 px-3 bg-slate-100">
-                     {thisEvent && thisEvent.medicalHistory.physicalActivity}
+                     {thisEvent?.medicalHistory.physicalActivity}
                   </div>
                </div>
             </div>
