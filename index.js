@@ -33,10 +33,10 @@ app.get("/api/search/patients", async (req, res) => {
 })
 
 // Get 10 latest updated patients
-// app.get("/api/patients/popular", async (req, res) => {
-//    const patients = await Patient.find().sort({ updatedAt: -1 }).limit(10)
-//    res.send(patients)
-// })
+app.get("/api/patients/popular", async (req, res) => {
+   const patients = await Patient.find().sort({ updatedAt: -1 }).limit(10).select("_id fullName dateOfBirth")
+   res.send(patients)
+})
 
 // Get patient main info
 app.get("/api/patients/:patientId", async (req, res) => {

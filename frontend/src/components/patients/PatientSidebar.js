@@ -3,9 +3,7 @@ import { NavLink, useParams } from "react-router-dom"
 
 import { Context } from "../../Context"
 
-import { UilListUl } from "@iconscout/react-unicons"
-import { UilFolderExclamation } from "@iconscout/react-unicons"
-import { UilStethoscope } from "@iconscout/react-unicons"
+import { UilListUl, UilFolderExclamation, UilStethoscope, UilHeartbeat, UilFileSearchAlt } from "@iconscout/react-unicons"
 
 export default function PatientSidebar(props) {
 
@@ -71,6 +69,26 @@ export default function PatientSidebar(props) {
                >
                   <UilStethoscope className="mr-1 text-xl" />
                   Consultas
+               </NavLink>
+            </li>
+            <li className="flex flex-col">
+               <NavLink
+                  to={`${patientPath}/categories/636ab45f2a4ea7e31aaeb9c9`}
+                  className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}
+                  onClick={() => props.toggleMenu(false)}
+               >
+                  <UilHeartbeat className="mr-1 text-xl" />
+                  Emergências
+               </NavLink>
+            </li>
+            <li className="flex flex-col">
+               <NavLink
+                  to={`${patientPath}/categories/636ab468dfa84746b0c4c2cf`}
+                  className={({ isActive }) => isActive ? menuActiveStyles : menuStyles}
+                  onClick={() => props.toggleMenu(false)}
+               >
+                  <UilFileSearchAlt className="mr-1 text-xl" />
+                  Exames
                </NavLink>
             </li>
          </ul>

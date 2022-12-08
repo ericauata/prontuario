@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react"
-import { Link } from "react-router-dom"
+import { json, Link } from "react-router-dom"
 
 import { Context } from "../Context"
 
@@ -15,6 +15,8 @@ export default function SearchPatient(props) {
 
    const [value, setValue] = useState("")
    const [suggestions, setSuggestions] = useState([])
+   const [mostRecent, setMostRecent] = useState()
+   const [showSuggestions, setShowSuggestions] = useState(false)
 
    const stylesObj = {
       labelStyles: "relative text-gray-400 block",
@@ -46,7 +48,17 @@ export default function SearchPatient(props) {
    }, [props.section])
 
    useEffect(() => {
-      if (suggestions.length > 0) {
+      fetch("/api/patients/popular")
+         .then(res => res.json())
+         .then(data => setMostRecent(data))
+   }, [])
+
+   useEffect(() => {
+      setSuggestions(mostRecent)
+   }, [mostRecent])
+
+   useEffect(() => {
+      if (showSuggestions) {
          document.body.addEventListener("keydown", onKeyDown)
          document.body.addEventListener("click", () => { startOver() })
       } else {
@@ -55,7 +67,7 @@ export default function SearchPatient(props) {
       return () => {
          document.body.removeEventListener("keydown", onKeyDown)
       }
-   }, [suggestions])
+   }, [suggestions, showSuggestions])
 
    function onKeyDown(event) {
       const isDown = event.key === "ArrowDown"
@@ -67,7 +79,7 @@ export default function SearchPatient(props) {
          item === document.activeElement
       ))
 
-      if (isUp && suggestions.length > 0) {
+      if (isUp && showSuggestions) {
          event.preventDefault()
          if (inputIsFocused) {
             suggestionsItems[suggestionsItems.length - 1].focus()
@@ -78,7 +90,7 @@ export default function SearchPatient(props) {
          }
       }
 
-      if (isDown && suggestions.length > 0) {
+      if (isDown && showSuggestions) {
          event.preventDefault()
          if (inputIsFocused) {
             suggestionsItems[0].focus()
@@ -97,7 +109,8 @@ export default function SearchPatient(props) {
       event.target.blur()
    }
    function startOver() { // Reset everything
-      setSuggestions([])
+      setSuggestions(mostRecent)
+      setShowSuggestions(false)
       setValue("")
       inputRef.current?.blur()
    }
@@ -105,12 +118,12 @@ export default function SearchPatient(props) {
    function handleChange(event) {
       let newValue = event.target.value
       setValue(newValue)
-      newValue.length > 0 && fetch(`/api/search/patients?q=${encodeURIComponent(newValue)}`)
-         .then(res => res.json())
-         .then(data => setSuggestions(data))
+      newValue.length > 0 ?
+         fetch(`/api/search/patients?q=${encodeURIComponent(newValue)}`)
+            .then(res => res.json())
+            .then(data => setSuggestions(data)) :
+         setSuggestions(mostRecent)
    }
-
-   // const suggestionsEl = 
 
    return (
       <div className={`relative ${props.className}`}>
@@ -124,6 +137,7 @@ export default function SearchPatient(props) {
                onChange={handleChange}
                ref={inputRef}
                onClick={(event) => event.stopPropagation()}
+               onFocus={() => setShowSuggestions(true)}
             />
             {value &&
                <UilTimes
@@ -135,13 +149,13 @@ export default function SearchPatient(props) {
                />
             }
          </label>
-         {suggestions.length > 0 &&
+         {showSuggestions &&
             <div
                ref={suggestionsRef}
                className={styles.suggestionsBoxStyles}
                onClick={(event) => event.stopPropagation()}
             >
-               {suggestions.map(item => {
+               {suggestions?.map(item => {
                   return (
                      <Link
                         to={`/patients/${item._id}`}
