@@ -21,7 +21,7 @@ export default function Header() {
             <Link to="/">
                <Logo
                   textClass="text-white text-2xl"
-                  imageClass="mr-1 w-7 h-7"
+                  imageClass="mr-1 w-8 h-8"
                />
             </Link>
             <a

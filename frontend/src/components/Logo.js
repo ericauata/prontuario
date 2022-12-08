@@ -7,7 +7,7 @@ export default function Logo(props) {
       <h1 className={`flex items-end ${props.textClass}`}>
          <UilCell className={props.imageClass} />
          <span className="font-serif">
-            MED RECORDS / EW
+            MED REC
          </span>
       </h1>
    )
